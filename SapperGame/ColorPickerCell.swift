@@ -26,6 +26,7 @@ final class ColorPickerCell: UICollectionViewCell {
     
     func configure(color: UIColor) {
         cellView.backgroundColor = color
+//        cellView.backgroundColor = .red
     }
 }
 
