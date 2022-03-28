@@ -11,12 +11,14 @@ final class ViewController: UIViewController {
 
     private enum Constants {
         static let cellIdentifier = "cellIdentifier"
+        static let lineSpacing: CGFloat = 2
     }
     
     private let layout = UICollectionViewFlowLayout()
     private var collectionView: UICollectionView!
-    private let size = 6
-    private let size2 = 3
+    private var numberOfBomb = Int()
+    private var numberOfELementsInArray = 100
+    private var numberOfCells: CGFloat = 10
     private var arr = [Int]()
     
     var bool: [Bool] = []
@@ -29,8 +31,25 @@ final class ViewController: UIViewController {
         configureView()
     }
     
+    func configure(type: Levels) {
+        switch type {
+        case .beginner(let beginner):
+            congifure(type: beginner)
+        case .middle(let middle):
+            congifure(type: middle)
+        case .advanced(let advanced):
+            congifure(type: advanced)
+        }
+    }
+    
+    private func congifure(type: Levels.NameType) {
+        numberOfELementsInArray = type.numberOfELementsInArray
+        numberOfCells = type.numberOfCells
+        numberOfBomb = type.numberOfBomb
+    }
+    
     private func createUniqueArray() {
-        for _ in 0..<100 {
+        for _ in 0..<numberOfELementsInArray {
             bool.append(false)
             colors.append(.gray)
         }
@@ -41,10 +60,10 @@ final class ViewController: UIViewController {
     }
     
     private func createArr() {
-        var arrays = Array<[Int]>(repeating: [], count: size2)
+        var arrays = Array<[Int]>(repeating: [], count: numberOfBomb)
         var array = [Int]()
         
-        for j in 0..<size2 {
+        for j in 0..<numberOfBomb {
             
             let uniqueSize = createUniqueSizeArray(arrays: arrays)
             array.append(uniqueSize)
@@ -52,21 +71,21 @@ final class ViewController: UIViewController {
         }
         
         arr = array
+        print(arr)
     }
     
     private func createUniqueSizeArray(arrays: Array<[Int]>) -> Int {
-        var uniqueSize = Int.random(in: 0...size)
+        var uniqueSize = Int.random(in: 0...numberOfELementsInArray)
         var i = 0
         
         while i < arrays.count - 1 {
             if uniqueSize == arrays[i].count {
-                uniqueSize = Int.random(in: 0...size)
+                uniqueSize = Int.random(in: 0...numberOfELementsInArray)
                 i = 0
             } else {
                 i += 1
             }
         }
-        
         return uniqueSize
     }
 }
@@ -75,7 +94,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = (collectionView.frame.width - 20)/10
+        let width = collectionView.frame.width/numberOfCells - Constants.lineSpacing
         return CGSize.init(width: width, height: width)
     }
 }
@@ -120,8 +139,8 @@ private extension ViewController {
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         
 //        layout.itemSize = CGSize(width: (collectionView.frame.width - 10)/5, height: (collectionView.frame.width - 10)/5)
-        layout.minimumLineSpacing = 2
-        layout.minimumInteritemSpacing = 2
+        layout.minimumLineSpacing = Constants.lineSpacing
+        layout.minimumInteritemSpacing = Constants.lineSpacing
         
         collectionView.register(ColorPickerCell.self, forCellWithReuseIdentifier: Constants.cellIdentifier)
         view.addSubview(collectionView)
