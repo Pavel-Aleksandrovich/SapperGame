@@ -37,8 +37,8 @@ private extension ColorPickerCell {
     func configureView() {
         contentView.addSubview(cellView)
         cellView.center = contentView.center
-        cellView.layer.cornerRadius = Constants.cellViewCornerRadius
-        cellView.clipsToBounds = true
+//        cellView.layer.cornerRadius = Constants.cellViewCornerRadius
+//        cellView.clipsToBounds = true
         cellView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([

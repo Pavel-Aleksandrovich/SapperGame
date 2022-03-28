@@ -30,7 +30,7 @@ final class ViewController: UIViewController {
     }
     
     private func createUniqueArray() {
-        for _ in 0...size {
+        for _ in 0..<100 {
             bool.append(false)
             colors.append(.gray)
         }
@@ -74,7 +74,9 @@ final class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: (collectionView.frame.width - 12)/6, height: (collectionView.frame.width - 12)/6)
+        
+        let width = (collectionView.frame.width - 20)/10
+        return CGSize.init(width: width, height: width)
     }
 }
 
@@ -117,7 +119,7 @@ private extension ViewController {
         
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         
-        layout.itemSize = CGSize(width: (collectionView.frame.width - 12)/6, height: (collectionView.frame.width - 12)/6)
+//        layout.itemSize = CGSize(width: (collectionView.frame.width - 10)/5, height: (collectionView.frame.width - 10)/5)
         layout.minimumLineSpacing = 2
         layout.minimumInteritemSpacing = 2
         
@@ -134,10 +136,10 @@ private extension ViewController {
     
     func configureLayout() {
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            collectionView.heightAnchor.constraint(equalTo: collectionView.widthAnchor),
+            collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 }
