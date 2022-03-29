@@ -17,12 +17,13 @@ final class ViewController: UIViewController {
     private let layout = UICollectionViewFlowLayout()
     private var collectionView: UICollectionView!
     private var numberOfBomb = Int()
-    private var numberOfELementsInArray = 100
-    private var numberOfCells: CGFloat = 10
+    private var numberOfELementsInArray: Int!
+    private var numberOfCells: CGFloat!
     private var arr = [Int]()
     
     var bool: [Bool] = []
     var colors: [UIColor] = []
+    var numb: Set<Int> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,16 +116,22 @@ extension ViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if bool[indexPath.row] {
-            print("true")
             colors[indexPath.row] = .red
             collectionView.reloadData()
             addElement(title: "Game Over", complition: {
                 self.navigationController?.popToRootViewController(animated: false)
             })
         } else {
-            print("false")
+            numb.insert(indexPath.row)
             colors[indexPath.row] = .green
             collectionView.reloadData()
+            if numb.count == numberOfELementsInArray - numberOfBomb {
+                addElement(title: "You are win", complition: {
+                    self.navigationController?.popToRootViewController(animated: false)
+                })
+            } else {
+               return
+            }
         }
     }
 }
