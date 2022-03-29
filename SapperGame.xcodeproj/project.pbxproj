@@ -9,23 +9,25 @@
 /* Begin PBXBuildFile section */
 		847E0A3927F1680B0067E936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A3827F1680B0067E936 /* AppDelegate.swift */; };
 		847E0A3B27F1680B0067E936 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A3A27F1680B0067E936 /* SceneDelegate.swift */; };
-		847E0A3D27F1680B0067E936 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A3C27F1680B0067E936 /* ViewController.swift */; };
+		847E0A3D27F1680B0067E936 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A3C27F1680B0067E936 /* GameViewController.swift */; };
 		847E0A4227F1680D0067E936 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847E0A4127F1680D0067E936 /* Assets.xcassets */; };
 		847E0A4527F1680D0067E936 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847E0A4327F1680D0067E936 /* LaunchScreen.storyboard */; };
-		847E0A4D27F16B1B0067E936 /* ColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A4C27F16B1B0067E936 /* ColorPickerCell.swift */; };
+		847E0A4D27F16B1B0067E936 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A4C27F16B1B0067E936 /* GameCell.swift */; };
 		847E0A4F27F1AD0F0067E936 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A4E27F1AD0F0067E936 /* StartViewController.swift */; };
+		847E0A5127F2DE4D0067E936 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A5027F2DE4D0067E936 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		847E0A3527F1680B0067E936 /* SapperGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SapperGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847E0A3827F1680B0067E936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847E0A3A27F1680B0067E936 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		847E0A3C27F1680B0067E936 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		847E0A3C27F1680B0067E936 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		847E0A4127F1680D0067E936 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		847E0A4427F1680D0067E936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		847E0A4627F1680D0067E936 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		847E0A4C27F16B1B0067E936 /* ColorPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCell.swift; sourceTree = "<group>"; };
+		847E0A4C27F16B1B0067E936 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		847E0A4E27F1AD0F0067E936 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		847E0A5027F2DE4D0067E936 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +62,10 @@
 			children = (
 				847E0A3827F1680B0067E936 /* AppDelegate.swift */,
 				847E0A3A27F1680B0067E936 /* SceneDelegate.swift */,
+				847E0A5027F2DE4D0067E936 /* CustomButton.swift */,
 				847E0A4E27F1AD0F0067E936 /* StartViewController.swift */,
-				847E0A3C27F1680B0067E936 /* ViewController.swift */,
-				847E0A4C27F16B1B0067E936 /* ColorPickerCell.swift */,
+				847E0A3C27F1680B0067E936 /* GameViewController.swift */,
+				847E0A4C27F16B1B0067E936 /* GameCell.swift */,
 				847E0A4127F1680D0067E936 /* Assets.xcassets */,
 				847E0A4327F1680D0067E936 /* LaunchScreen.storyboard */,
 				847E0A4627F1680D0067E936 /* Info.plist */,
@@ -140,8 +143,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				847E0A4F27F1AD0F0067E936 /* StartViewController.swift in Sources */,
-				847E0A3D27F1680B0067E936 /* ViewController.swift in Sources */,
-				847E0A4D27F16B1B0067E936 /* ColorPickerCell.swift in Sources */,
+				847E0A3D27F1680B0067E936 /* GameViewController.swift in Sources */,
+				847E0A5127F2DE4D0067E936 /* CustomButton.swift in Sources */,
+				847E0A4D27F16B1B0067E936 /* GameCell.swift in Sources */,
 				847E0A3927F1680B0067E936 /* AppDelegate.swift in Sources */,
 				847E0A3B27F1680B0067E936 /* SceneDelegate.swift in Sources */,
 			);

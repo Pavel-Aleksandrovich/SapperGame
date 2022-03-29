@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ColorPickerCell: UICollectionViewCell {
+final class GameCell: UICollectionViewCell {
     
     private enum Constants {
         static let cellViewCornerRadius = CGFloat(19)
@@ -26,13 +26,12 @@ final class ColorPickerCell: UICollectionViewCell {
     
     func configure(color: UIColor) {
         cellView.backgroundColor = color
-//        cellView.backgroundColor = .red
     }
 }
 
 // MARK: - ConfigureView
 
-private extension ColorPickerCell {
+private extension GameCell {
     
     func configureView() {
         contentView.addSubview(cellView)

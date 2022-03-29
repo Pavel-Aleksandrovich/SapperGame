@@ -20,9 +20,9 @@ enum Levels {
 
 final class StartViewController: UIViewController {
     
-    private let advancedButton = UIButton()
-    private let beginnerButton = UIButton()
-    private let middleButton = UIButton()
+    private let advancedButton = CustomButton()
+    private let beginnerButton = CustomButton()
+    private let middleButton = CustomButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,36 +36,15 @@ final class StartViewController: UIViewController {
     }
     
     private func configureAdvancedButton() {
-        advancedButton.layer.cornerRadius = 30
-        advancedButton.layer.borderWidth = 2
-        advancedButton.layer.borderColor = UIColor.red.cgColor
-        advancedButton.setTitle("Advanced", for: .normal)
-        advancedButton.setTitleColor(.red, for: .normal)
-        advancedButton.titleLabel?.font =  UIFont(name: "Helvetica", size: 25)
+        advancedButton.customButton(title: "Advanced", action: #selector(advancedButtonTapped), view: self, color: .red)
         
-        advancedButton.addTarget(self, action: #selector(advancedButtonTapped), for: .touchUpInside)
+        middleButton.customButton(title: "Middle", action: #selector(middleButtonTapped), view: self, color: .blue)
         
-        middleButton.layer.cornerRadius = 30
-        middleButton.layer.borderWidth = 2
-        middleButton.layer.borderColor = UIColor.blue.cgColor
-        middleButton.setTitle("Middle", for: .normal)
-        middleButton.setTitleColor(.blue, for: .normal)
-        middleButton.titleLabel?.font =  UIFont(name: "Helvetica", size: 25)
-        
-        middleButton.addTarget(self, action: #selector(middleButtonTapped), for: .touchUpInside)
-        
-        beginnerButton.layer.cornerRadius = 30
-        beginnerButton.layer.borderWidth = 2
-        beginnerButton.layer.borderColor = UIColor.green.cgColor
-        beginnerButton.setTitle("Beginner", for: .normal)
-        beginnerButton.setTitleColor(.green, for: .normal)
-        beginnerButton.titleLabel?.font =  UIFont(name: "Helvetica", size: 25)
-        
-        beginnerButton.addTarget(self, action: #selector(beginnerButtonTapped), for: .touchUpInside)
+        beginnerButton.customButton(title: "Beginner", action: #selector(beginnerButtonTapped), view: self, color: .green)
     }
     
     @objc private func advancedButtonTapped() {
-        let vc = ViewController()
+        let vc = GameViewController()
         vc.state = Levels.advanced(Levels.NameType(
                                     numberOfBomb: 10,
                                     numberOfCells: 10))
@@ -73,7 +52,7 @@ final class StartViewController: UIViewController {
     }
     
     @objc private func middleButtonTapped() {
-        let vc = ViewController()
+        let vc = GameViewController()
         vc.state = Levels.middle(Levels.NameType(
                                             numberOfBomb: 5,
                                             numberOfCells: 5))
@@ -81,7 +60,7 @@ final class StartViewController: UIViewController {
     }
     
     @objc private func beginnerButtonTapped() {
-        let vc = ViewController()
+        let vc = GameViewController()
         vc.state = Levels.beginner(Levels.NameType(
                                             numberOfBomb: 1,
                                             numberOfCells: 3))
@@ -91,10 +70,6 @@ final class StartViewController: UIViewController {
     private func configureView() {
         title = "SapperGame"
         view.backgroundColor = .white
-        
-        [advancedButton, beginnerButton, middleButton].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
         
         view.addSubview(advancedButton)
         view.addSubview(beginnerButton)

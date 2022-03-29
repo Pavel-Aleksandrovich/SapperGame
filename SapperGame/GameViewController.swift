@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class GameViewController: UIViewController {
 
     private enum Constants {
         static let cellIdentifier = "cellIdentifier"
@@ -17,8 +17,8 @@ final class ViewController: UIViewController {
     private let layout = UICollectionViewFlowLayout()
     private var collectionView: UICollectionView!
     private var numberOfBomb = Int()
-    private var numberOfELementsInArray: Int!
-    private var numberOfCells: CGFloat!
+    private var numberOfELementsInArray = Int()
+    private var numberOfCells = CGFloat()
     private var arr = [Int]()
     
     private var bool: [Bool] = []
@@ -111,7 +111,7 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension GameViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -120,7 +120,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension GameViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if bool[indexPath.row] {
@@ -144,14 +144,14 @@ extension ViewController: UICollectionViewDelegate {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension GameViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellIdentifier, for: indexPath) as! ColorPickerCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellIdentifier, for: indexPath) as! GameCell
         
         let color = colors[indexPath.item]
         cell.configure(color: color)
@@ -160,7 +160,7 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-private extension ViewController {
+private extension GameViewController {
     
     func configureView() {
         title = "SapperGame"
@@ -172,7 +172,7 @@ private extension ViewController {
         layout.minimumLineSpacing = Constants.lineSpacing
         layout.minimumInteritemSpacing = Constants.lineSpacing
         
-        collectionView.register(ColorPickerCell.self, forCellWithReuseIdentifier: Constants.cellIdentifier)
+        collectionView.register(GameCell.self, forCellWithReuseIdentifier: Constants.cellIdentifier)
         view.addSubview(collectionView)
         collectionView.center = view.center
         collectionView.backgroundColor = UIColor.clear
@@ -185,8 +185,8 @@ private extension ViewController {
     
     func configureLayout() {
         NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             collectionView.heightAnchor.constraint(equalTo: collectionView.widthAnchor),
             collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
