@@ -11,7 +11,7 @@ final class ViewController: UIViewController {
 
     private enum Constants {
         static let cellIdentifier = "cellIdentifier"
-        static let lineSpacing: CGFloat = 2
+        static let lineSpacing: CGFloat = 1
     }
     
     private let layout = UICollectionViewFlowLayout()
@@ -75,18 +75,30 @@ final class ViewController: UIViewController {
     }
     
     private func createUniqueSizeArray(arrays: Array<[Int]>) -> Int {
-        var uniqueSize = Int.random(in: 0...numberOfELementsInArray)
+        var uniqueSize = Int.random(in: 0..<numberOfELementsInArray)
         var i = 0
         
         while i < arrays.count - 1 {
             if uniqueSize == arrays[i].count {
-                uniqueSize = Int.random(in: 0...numberOfELementsInArray)
+                uniqueSize = Int.random(in: 0..<numberOfELementsInArray)
                 i = 0
             } else {
                 i += 1
             }
         }
         return uniqueSize
+    }
+    
+    private func addElement(title: String, complition: @escaping () -> ()) {
+        
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+    
+        let action = UIAlertAction(title: "Ok", style: .default) {_ in
+            complition()
+        }
+        alertController.addAction(action)
+        
+        present(alertController, animated: false, completion: nil)
     }
 }
 
@@ -106,6 +118,9 @@ extension ViewController: UICollectionViewDelegate {
             print("true")
             colors[indexPath.row] = .red
             collectionView.reloadData()
+            addElement(title: "Game Over", complition: {
+                self.navigationController?.popToRootViewController(animated: false)
+            })
         } else {
             print("false")
             colors[indexPath.row] = .green
