@@ -21,9 +21,15 @@ final class ViewController: UIViewController {
     private var numberOfCells: CGFloat!
     private var arr = [Int]()
     
-    var bool: [Bool] = []
-    var colors: [UIColor] = []
-    var numb: Set<Int> = []
+    private var bool: [Bool] = []
+    private var colors: [UIColor] = []
+    private var numb: Set<Int> = []
+    
+    var state: Levels! {
+        didSet{
+            configureState()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,20 +38,22 @@ final class ViewController: UIViewController {
         configureView()
     }
     
-    func configure(type: Levels) {
-        switch type {
+    private func configureState() {
+        switch state {
         case .beginner(let beginner):
             congifure(type: beginner)
         case .middle(let middle):
             congifure(type: middle)
         case .advanced(let advanced):
             congifure(type: advanced)
+        case .none:
+            break
         }
     }
     
     private func congifure(type: Levels.NameType) {
-        numberOfELementsInArray = type.numberOfELementsInArray
         numberOfCells = type.numberOfCells
+        numberOfELementsInArray = Int(numberOfCells*numberOfCells)
         numberOfBomb = type.numberOfBomb
     }
     

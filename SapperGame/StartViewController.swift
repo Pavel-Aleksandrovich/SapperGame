@@ -15,7 +15,6 @@ enum Levels {
     struct NameType {
         let numberOfBomb: Int
         let numberOfCells: CGFloat
-        let numberOfELementsInArray: Int
     }
 }
 
@@ -67,28 +66,25 @@ final class StartViewController: UIViewController {
     
     @objc private func advancedButtonTapped() {
         let vc = ViewController()
-        vc.configure(type: Levels.advanced(Levels.NameType(
-                                            numberOfBomb: 10,
-                                            numberOfCells: 10,
-                                            numberOfELementsInArray: 100)))
+        vc.state = Levels.advanced(Levels.NameType(
+                                    numberOfBomb: 10,
+                                    numberOfCells: 10))
         navigationController?.pushViewController(vc, animated: false)
     }
     
     @objc private func middleButtonTapped() {
         let vc = ViewController()
-        vc.configure(type: Levels.middle(Levels.NameType(
+        vc.state = Levels.middle(Levels.NameType(
                                             numberOfBomb: 5,
-                                            numberOfCells: 5,
-                                            numberOfELementsInArray: 25)))
+                                            numberOfCells: 5))
         navigationController?.pushViewController(vc, animated: false)
     }
     
     @objc private func beginnerButtonTapped() {
         let vc = ViewController()
-        vc.configure(type: Levels.beginner(Levels.NameType(
+        vc.state = Levels.beginner(Levels.NameType(
                                             numberOfBomb: 1,
-                                            numberOfCells: 3,
-                                            numberOfELementsInArray: 9)))
+                                            numberOfCells: 3))
         navigationController?.pushViewController(vc, animated: false)
     }
     
