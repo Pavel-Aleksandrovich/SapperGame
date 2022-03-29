@@ -23,6 +23,7 @@ final class StartViewController: UIViewController {
     private let advancedButton = CustomButton()
     private let beginnerButton = CustomButton()
     private let middleButton = CustomButton()
+    private let vStackView = CustomStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,26 +45,26 @@ final class StartViewController: UIViewController {
     }
     
     @objc private func advancedButtonTapped() {
-        let vc = GameViewController()
-        vc.state = Levels.advanced(Levels.NameType(
-                                    numberOfBomb: 10,
-                                    numberOfCells: 10))
-        navigationController?.pushViewController(vc, animated: false)
+        createViewController(state: Levels.advanced(Levels.NameType(
+                                                        numberOfBomb: 10,
+                                                        numberOfCells: 10)))
     }
     
     @objc private func middleButtonTapped() {
-        let vc = GameViewController()
-        vc.state = Levels.middle(Levels.NameType(
-                                            numberOfBomb: 5,
-                                            numberOfCells: 5))
-        navigationController?.pushViewController(vc, animated: false)
+        createViewController(state: Levels.middle(Levels.NameType(
+                                                    numberOfBomb: 5,
+                                                    numberOfCells: 5)))
     }
     
     @objc private func beginnerButtonTapped() {
+        createViewController(state: Levels.beginner(Levels.NameType(
+                                                        numberOfBomb: 1,
+                                                        numberOfCells: 3)))
+    }
+    
+    private func createViewController(state: Levels) {
         let vc = GameViewController()
-        vc.state = Levels.beginner(Levels.NameType(
-                                            numberOfBomb: 1,
-                                            numberOfCells: 3))
+        vc.state = state
         navigationController?.pushViewController(vc, animated: false)
     }
     
@@ -71,27 +72,27 @@ final class StartViewController: UIViewController {
         title = "SapperGame"
         view.backgroundColor = .white
         
-        view.addSubview(advancedButton)
-        view.addSubview(beginnerButton)
-        view.addSubview(middleButton)
+        view.addSubview(vStackView)
+        vStackView.addArrangedSubview(advancedButton)
+        vStackView.addArrangedSubview(middleButton)
+        vStackView.addArrangedSubview(beginnerButton)
     }
     
     private func configureLayoutConstraints() {
         NSLayoutConstraint.activate([
-            advancedButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            advancedButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            
+            vStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            vStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
+            vStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            advancedButton.widthAnchor.constraint(equalTo: vStackView.widthAnchor),
             advancedButton.heightAnchor.constraint(equalToConstant: 60),
-            advancedButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-            middleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            middleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            middleButton.widthAnchor.constraint(equalTo: vStackView.widthAnchor),
             middleButton.heightAnchor.constraint(equalToConstant: 60),
-            middleButton.topAnchor.constraint(equalTo: advancedButton.bottomAnchor, constant: 30),
             
-            beginnerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            beginnerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            beginnerButton.widthAnchor.constraint(equalTo: vStackView.widthAnchor),
             beginnerButton.heightAnchor.constraint(equalToConstant: 60),
-            beginnerButton.topAnchor.constraint(equalTo: middleButton.bottomAnchor, constant: 30),
         ])
     }
 }
