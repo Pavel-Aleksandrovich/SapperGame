@@ -64,19 +64,51 @@
 		847E0A3727F1680B0067E936 /* SapperGame */ = {
 			isa = PBXGroup;
 			children = (
-				847E0A3827F1680B0067E936 /* AppDelegate.swift */,
-				847E0A3A27F1680B0067E936 /* SceneDelegate.swift */,
-				847E0A5027F2DE4D0067E936 /* CustomButton.swift */,
-				847E0A5227F2FF960067E936 /* CustomStackView.swift */,
-				847E0A5427F304070067E936 /* CustomAlert.swift */,
+				847E0A5627F30E590067E936 /* Scenes */,
+				847E0A5827F30EB70067E936 /* Helpers */,
+				847E0A5727F30E960067E936 /* Application */,
+				847E0A5927F30ED20067E936 /* Resources */,
+			);
+			path = SapperGame;
+			sourceTree = "<group>";
+		};
+		847E0A5627F30E590067E936 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
 				847E0A4E27F1AD0F0067E936 /* StartViewController.swift */,
 				847E0A3C27F1680B0067E936 /* GameViewController.swift */,
 				847E0A4C27F16B1B0067E936 /* GameCell.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		847E0A5727F30E960067E936 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				847E0A3827F1680B0067E936 /* AppDelegate.swift */,
+				847E0A3A27F1680B0067E936 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		847E0A5827F30EB70067E936 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				847E0A5027F2DE4D0067E936 /* CustomButton.swift */,
+				847E0A5227F2FF960067E936 /* CustomStackView.swift */,
+				847E0A5427F304070067E936 /* CustomAlert.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		847E0A5927F30ED20067E936 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				847E0A4127F1680D0067E936 /* Assets.xcassets */,
 				847E0A4327F1680D0067E936 /* LaunchScreen.storyboard */,
 				847E0A4627F1680D0067E936 /* Info.plist */,
 			);
-			path = SapperGame;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +328,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PZRD3MXDYZ;
-				INFOPLIST_FILE = SapperGame/Info.plist;
+				INFOPLIST_FILE = SapperGame/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +347,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PZRD3MXDYZ;
-				INFOPLIST_FILE = SapperGame/Info.plist;
+				INFOPLIST_FILE = SapperGame/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

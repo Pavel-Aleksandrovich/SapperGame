@@ -20,11 +20,11 @@ final class GameViewController: UIViewController {
     private var numberOfELementsInArray = Int()
     private var numberOfCells = CGFloat()
     private var arr = [Int]()
-    private var alert = CustomAlert()
+    private let alert = CustomAlert()
     
-    private var bool: [Bool] = []
-    private var colors: [UIColor] = []
-    private var numb: Set<Int> = []
+    private var boolArray: [Bool] = []
+    private var colorArray: [UIColor] = []
+    private var totalToWinSet: Set<Int> = []
     
     var state: Levels! {
         didSet{
@@ -34,8 +34,8 @@ final class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createArr()
-        createUniqueArray()
+        createRandomBombs()
+        createArrays()
         configureView()
     }
     
@@ -58,45 +58,44 @@ final class GameViewController: UIViewController {
         numberOfBomb = type.numberOfBomb
     }
     
-    private func createUniqueArray() {
-        for _ in 0..<numberOfELementsInArray {
-            bool.append(false)
-            colors.append(.gray)
-        }
+    private func createArrays() {
+        boolArray = Array<Bool>(repeating: false, count: numberOfELementsInArray)
+        colorArray = Array<UIColor>(repeating: .gray, count: numberOfELementsInArray)
         
         for i in 0..<arr.count {
-            bool[arr[i]] = true
+            boolArray[arr[i]] = true
         }
     }
     
-    private func createArr() {
-        var arrays = Array<[Int]>(repeating: [], count: numberOfBomb)
-        var array = [Int]()
-        
-        for j in 0..<numberOfBomb {
-            
-            let uniqueSize = createUniqueSizeArray(arrays: arrays)
-            array.append(uniqueSize)
-            arrays[j] = Array<Int>(repeating: 0, count: uniqueSize)
+    private func createRandomBombs() {
+        var randomSet: Set<Int> = []
+        while randomSet.count < numberOfBomb {
+            let uniqueSize = Int.random(in: 0..<numberOfELementsInArray)
+            randomSet.insert(uniqueSize)
         }
-        
-        arr = array
-        print(arr)
+        arr = Array(randomSet)
+        print(randomSet)
     }
     
-    private func createUniqueSizeArray(arrays: Array<[Int]>) -> Int {
-        var uniqueSize = Int.random(in: 0..<numberOfELementsInArray)
-        var i = 0
+    private func notBombTapped(index: Int) {
+        totalToWinSet.insert(index)
+        colorArray[index] = .green
+        collectionView.reloadData()
         
-        while i < arrays.count - 1 {
-            if uniqueSize == arrays[i].count {
-                uniqueSize = Int.random(in: 0..<numberOfELementsInArray)
-                i = 0
-            } else {
-                i += 1
-            }
+        if totalToWinSet.count == numberOfELementsInArray - numberOfBomb {
+            alert.showAlert(view: self, title: "You are win", complition: {
+                self.navigationController?.popToRootViewController(animated: false)
+            })
         }
-        return uniqueSize
+    }
+    
+    private func bombTapped(index: Int) {
+        colorArray[index] = .red
+        collectionView.reloadData()
+        
+        alert.showAlert(view: self, title: "Game Over", complition: {
+            self.navigationController?.popToRootViewController(animated: false)
+        })
     }
 }
 
@@ -112,23 +111,11 @@ extension GameViewController: UICollectionViewDelegateFlowLayout {
 extension GameViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if bool[indexPath.row] {
-            colors[indexPath.row] = .red
-            collectionView.reloadData()
-            alert.showAlert(view: self, title: "Game Over", complition: {
-                self.navigationController?.popToRootViewController(animated: false)
-            })
+        
+        if boolArray[indexPath.row] {
+            bombTapped(index: indexPath.row)
         } else {
-            numb.insert(indexPath.row)
-            colors[indexPath.row] = .green
-            collectionView.reloadData()
-            if numb.count == numberOfELementsInArray - numberOfBomb {
-                alert.showAlert(view: self, title: "You are win", complition: {
-                    self.navigationController?.popToRootViewController(animated: false)
-                })
-            } else {
-                return
-            }
+            notBombTapped(index: indexPath.row)
         }
     }
 }
@@ -136,13 +123,13 @@ extension GameViewController: UICollectionViewDelegate {
 extension GameViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return colors.count
+        return colorArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellIdentifier, for: indexPath) as! GameCell
         
-        let color = colors[indexPath.item]
+        let color = colorArray[indexPath.item]
         cell.configure(color: color)
         
         return cell
@@ -162,7 +149,6 @@ private extension GameViewController {
         
         collectionView.register(GameCell.self, forCellWithReuseIdentifier: Constants.cellIdentifier)
         view.addSubview(collectionView)
-        collectionView.center = view.center
         collectionView.backgroundColor = UIColor.clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
