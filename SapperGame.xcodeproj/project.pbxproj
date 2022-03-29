@@ -16,6 +16,7 @@
 		847E0A4F27F1AD0F0067E936 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A4E27F1AD0F0067E936 /* StartViewController.swift */; };
 		847E0A5127F2DE4D0067E936 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A5027F2DE4D0067E936 /* CustomButton.swift */; };
 		847E0A5327F2FF960067E936 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A5227F2FF960067E936 /* CustomStackView.swift */; };
+		847E0A5527F304070067E936 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A5427F304070067E936 /* CustomAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		847E0A4E27F1AD0F0067E936 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		847E0A5027F2DE4D0067E936 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		847E0A5227F2FF960067E936 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
+		847E0A5427F304070067E936 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				847E0A3A27F1680B0067E936 /* SceneDelegate.swift */,
 				847E0A5027F2DE4D0067E936 /* CustomButton.swift */,
 				847E0A5227F2FF960067E936 /* CustomStackView.swift */,
+				847E0A5427F304070067E936 /* CustomAlert.swift */,
 				847E0A4E27F1AD0F0067E936 /* StartViewController.swift */,
 				847E0A3C27F1680B0067E936 /* GameViewController.swift */,
 				847E0A4C27F16B1B0067E936 /* GameCell.swift */,
@@ -152,6 +155,7 @@
 				847E0A5327F2FF960067E936 /* CustomStackView.swift in Sources */,
 				847E0A3927F1680B0067E936 /* AppDelegate.swift in Sources */,
 				847E0A3B27F1680B0067E936 /* SceneDelegate.swift in Sources */,
+				847E0A5527F304070067E936 /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,10 +27,6 @@ final class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureLayout()
-    }
-    
-    private func configureLayout() {
         configureView()
         configureLayoutConstraints()
         configureAdvancedButton()

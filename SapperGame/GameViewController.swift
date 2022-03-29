@@ -8,7 +8,7 @@
 import UIKit
 
 final class GameViewController: UIViewController {
-
+    
     private enum Constants {
         static let cellIdentifier = "cellIdentifier"
         static let lineSpacing: CGFloat = 1
@@ -20,6 +20,7 @@ final class GameViewController: UIViewController {
     private var numberOfELementsInArray = Int()
     private var numberOfCells = CGFloat()
     private var arr = [Int]()
+    private var alert = CustomAlert()
     
     private var bool: [Bool] = []
     private var colors: [UIColor] = []
@@ -97,18 +98,6 @@ final class GameViewController: UIViewController {
         }
         return uniqueSize
     }
-    
-    private func addElement(title: String, complition: @escaping () -> ()) {
-        
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-    
-        let action = UIAlertAction(title: "Ok", style: .default) {_ in
-            complition()
-        }
-        alertController.addAction(action)
-        
-        present(alertController, animated: false, completion: nil)
-    }
 }
 
 extension GameViewController: UICollectionViewDelegateFlowLayout {
@@ -126,7 +115,7 @@ extension GameViewController: UICollectionViewDelegate {
         if bool[indexPath.row] {
             colors[indexPath.row] = .red
             collectionView.reloadData()
-            addElement(title: "Game Over", complition: {
+            alert.showAlert(view: self, title: "Game Over", complition: {
                 self.navigationController?.popToRootViewController(animated: false)
             })
         } else {
@@ -134,11 +123,11 @@ extension GameViewController: UICollectionViewDelegate {
             colors[indexPath.row] = .green
             collectionView.reloadData()
             if numb.count == numberOfELementsInArray - numberOfBomb {
-                addElement(title: "You are win", complition: {
+                alert.showAlert(view: self, title: "You are win", complition: {
                     self.navigationController?.popToRootViewController(animated: false)
                 })
             } else {
-               return
+                return
             }
         }
     }
@@ -168,7 +157,6 @@ private extension GameViewController {
         
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         
-//        layout.itemSize = CGSize(width: (collectionView.frame.width - 10)/5, height: (collectionView.frame.width - 10)/5)
         layout.minimumLineSpacing = Constants.lineSpacing
         layout.minimumInteritemSpacing = Constants.lineSpacing
         
