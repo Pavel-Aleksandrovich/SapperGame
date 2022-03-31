@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Firebase
 
-final class AuthTextField: UITextField, UITextFieldDelegate {
+final class AuthTextField: UITextField {
     
     private var view: UIViewController?
     
@@ -17,7 +18,7 @@ final class AuthTextField: UITextField, UITextFieldDelegate {
     
     func configureTextField(view: UIViewController, placeholder: String) {
         self.view = view
-        self.delegate = self
+//        self.delegate = self
         self.placeholder = placeholder
         self.borderStyle = .roundedRect
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +31,7 @@ final class AuthTextField: UITextField, UITextFieldDelegate {
         return true
     }
     
-    func hideKeyboardWhenTappedAround() {
+    private func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view?.view.addGestureRecognizer(tap)

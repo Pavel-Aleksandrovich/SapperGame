@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 enum Levels {
     case beginner(NameType)
@@ -30,6 +31,7 @@ final class StartViewController: UIViewController {
         configureView()
         configureLayoutConstraints()
         configureAdvancedButton()
+        createBarButtonItem()
     }
     
     private func configureAdvancedButton() {
@@ -62,6 +64,19 @@ final class StartViewController: UIViewController {
         let vc = GameViewController()
         vc.state = state
         navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    private func createBarButtonItem() {
+        let exitBarButton = UIBarButtonItem(title: "Exit", style: .done, target: self, action: #selector(exitButtonTapped))
+        navigationItem.leftBarButtonItem = exitBarButton
+    }
+    
+    @objc private func exitButtonTapped() {
+        do{
+            try Auth.auth().signOut()
+        }catch {
+            print("error")
+        }
     }
     
     private func configureView() {
