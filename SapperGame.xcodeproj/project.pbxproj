@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		847BA83827F5594600DDE673 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83727F5594600DDE673 /* AuthViewController.swift */; };
+		847BA83D27F5616500DDE673 /* AuthCustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83C27F5616500DDE673 /* AuthCustomStackView.swift */; };
+		847BA84027F5673800DDE673 /* AuthCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83F27F5673800DDE673 /* AuthCustomButton.swift */; };
 		847E0A3927F1680B0067E936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A3827F1680B0067E936 /* AppDelegate.swift */; };
 		847E0A3B27F1680B0067E936 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A3A27F1680B0067E936 /* SceneDelegate.swift */; };
 		847E0A3D27F1680B0067E936 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A3C27F1680B0067E936 /* GameViewController.swift */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		847BA83727F5594600DDE673 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		847BA83C27F5616500DDE673 /* AuthCustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCustomStackView.swift; sourceTree = "<group>"; };
+		847BA83F27F5673800DDE673 /* AuthCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCustomButton.swift; sourceTree = "<group>"; };
 		847E0A3527F1680B0067E936 /* SapperGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SapperGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847E0A3827F1680B0067E936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847E0A3A27F1680B0067E936 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +51,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		847BA83927F5611000DDE673 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				847BA83727F5594600DDE673 /* AuthViewController.swift */,
+				847BA83E27F5672900DDE673 /* Custom UI */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		847BA83A27F5611E00DDE673 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				847E0A3C27F1680B0067E936 /* GameViewController.swift */,
+				847E0A4C27F16B1B0067E936 /* GameCell.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		847BA83B27F5614A00DDE673 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				847E0A4E27F1AD0F0067E936 /* StartViewController.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		847BA83E27F5672900DDE673 /* Custom UI */ = {
+			isa = PBXGroup;
+			children = (
+				847BA83C27F5616500DDE673 /* AuthCustomStackView.swift */,
+				847BA83F27F5673800DDE673 /* AuthCustomButton.swift */,
+			);
+			path = "Custom UI";
+			sourceTree = "<group>";
+		};
 		847E0A2C27F1680B0067E936 = {
 			isa = PBXGroup;
 			children = (
@@ -77,10 +116,9 @@
 		847E0A5627F30E590067E936 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				847E0A4E27F1AD0F0067E936 /* StartViewController.swift */,
-				847E0A3C27F1680B0067E936 /* GameViewController.swift */,
-				847E0A4C27F16B1B0067E936 /* GameCell.swift */,
-				847BA83727F5594600DDE673 /* AuthViewController.swift */,
+				847BA83B27F5614A00DDE673 /* Start */,
+				847BA83A27F5611E00DDE673 /* Game */,
+				847BA83927F5611000DDE673 /* Auth */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -187,10 +225,12 @@
 				847E0A3D27F1680B0067E936 /* GameViewController.swift in Sources */,
 				847E0A5127F2DE4D0067E936 /* CustomButton.swift in Sources */,
 				847E0A4D27F16B1B0067E936 /* GameCell.swift in Sources */,
+				847BA83D27F5616500DDE673 /* AuthCustomStackView.swift in Sources */,
 				847E0A5327F2FF960067E936 /* CustomStackView.swift in Sources */,
 				847E0A3927F1680B0067E936 /* AppDelegate.swift in Sources */,
 				847E0A3B27F1680B0067E936 /* SceneDelegate.swift in Sources */,
 				847BA83827F5594600DDE673 /* AuthViewController.swift in Sources */,
+				847BA84027F5673800DDE673 /* AuthCustomButton.swift in Sources */,
 				847E0A5527F304070067E936 /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
