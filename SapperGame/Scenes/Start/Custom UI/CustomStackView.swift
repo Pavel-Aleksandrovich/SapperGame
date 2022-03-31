@@ -25,4 +25,10 @@ final class CustomStackView: UIStackView {
         self.spacing = 25
         self.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    func addArrangedSubviews(_ views: [UIView]) {
+        views.forEach {
+            self.addArrangedSubview($0)
+        }
+    }
 }

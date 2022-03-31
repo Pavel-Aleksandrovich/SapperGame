@@ -9,11 +9,11 @@ import UIKit
 
 final class AuthViewController: UIViewController {
     
-    private let vStackView = AuthCustomStackView()
-    private let nameTextField = UITextField()
-    private let emailTextField = UITextField()
-    private let passwordTextField = UITextField()
-    private let enterButton = AuthCustomButton()
+    private let vStackView = AuthStackView()
+    private let nameTextField = AuthTextField()
+    private let emailTextField = AuthTextField()
+    private let passwordTextField = AuthTextField()
+    private let enterButton = AuthButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,29 +26,16 @@ final class AuthViewController: UIViewController {
         title = "Auth"
         view.backgroundColor = .white
         
-        nameTextField.delegate = self
-        nameTextField.placeholder = "name"
-        nameTextField.borderStyle = .roundedRect
+        nameTextField.configureTextField(view: self, placeholder: "name")
         
-        emailTextField.delegate = self
-        emailTextField.placeholder = "email"
-        emailTextField.borderStyle = .roundedRect
+        emailTextField.configureTextField(view: self, placeholder: "email")
         
-        passwordTextField.delegate = self
-        passwordTextField.placeholder = "password"
-        passwordTextField.borderStyle = .roundedRect
+        passwordTextField.configureTextField(view: self, placeholder: "password")
         
         enterButton.customButton(title: "Enter", action: #selector(enterButtonTapped), view: self, color: .blue)
         
-        [nameTextField, emailTextField, passwordTextField].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
         view.addSubview(vStackView)
-        vStackView.addArrangedSubview(nameTextField)
-        vStackView.addArrangedSubview(emailTextField)
-        vStackView.addArrangedSubview(passwordTextField)
-        vStackView.addArrangedSubview(enterButton)
+        vStackView.addArrangedSubviews([nameTextField, emailTextField, passwordTextField, enterButton])
     }
     
     @objc private func enterButtonTapped() {
@@ -75,7 +62,4 @@ final class AuthViewController: UIViewController {
             enterButton.heightAnchor.constraint(equalToConstant: 60),
         ])
     }
-}
-
-extension AuthViewController: UITextFieldDelegate {
 }

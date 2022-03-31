@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AuthCustomStackView: UIStackView {
+final class AuthStackView: UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,5 +24,11 @@ final class AuthCustomStackView: UIStackView {
         self.distribution = .fillProportionally
         self.spacing = 20
         self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func addArrangedSubviews(_ views: [UIView]) {
+        views.forEach {
+            self.addArrangedSubview($0)
+        }
     }
 }

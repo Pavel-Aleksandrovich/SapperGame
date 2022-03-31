@@ -7,13 +7,15 @@
 
 import UIKit
 
-final class AuthCustomButton: UIButton {
+final class AuthButton: UIButton {
+    
     private var isCurrentOutside = false
     
     func customButton(title: String,
                       action: Selector,
                       view: UIViewController,
                       color: UIColor) {
+        
         self.clipsToBounds = true
         self.layer.cornerRadius = 30
         self.layer.borderColor = color.cgColor
@@ -23,6 +25,7 @@ final class AuthCustomButton: UIButton {
         self.titleLabel?.font =  UIFont(name: "Helvetica", size: 25)
         self.addTarget(view, action: action, for: .touchUpInside)
         self.translatesAutoresizingMaskIntoConstraints = false
+        
         animate()
     }
     

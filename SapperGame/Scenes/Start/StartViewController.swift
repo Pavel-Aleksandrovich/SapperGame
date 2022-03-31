@@ -69,9 +69,7 @@ final class StartViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(vStackView)
-        vStackView.addArrangedSubview(advancedButton)
-        vStackView.addArrangedSubview(middleButton)
-        vStackView.addArrangedSubview(beginnerButton)
+        vStackView.addArrangedSubviews([advancedButton, middleButton, beginnerButton])
     }
     
     private func configureLayoutConstraints() {
