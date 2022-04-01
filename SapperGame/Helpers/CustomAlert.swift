@@ -9,12 +9,12 @@ import UIKit
 
 final class CustomAlert {
     
-    func showAlert(view: UIViewController, title: String, complition: @escaping () -> ()) {
+    func showAlert(view: UIViewController, title: String, complition: ( () -> ())?) {
         
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
     
         let action = UIAlertAction(title: "Ok", style: .default) {_ in
-            complition()
+            complition?()
         }
         alertController.addAction(action)
         

@@ -21,8 +21,9 @@ final class AuthButton: UIButton {
         self.layer.borderColor = color.cgColor
         self.layer.borderWidth = 2
         self.setTitle(title, for: .normal)
+//        self.description.t
         self.setTitleColor(color, for: .normal)
-        self.titleLabel?.font =  UIFont(name: "Helvetica", size: 25)
+        self.titleLabel?.font =  UIFont(name: "Helvetica", size: 18)
         self.addTarget(view, action: action, for: .touchUpInside)
         self.translatesAutoresizingMaskIntoConstraints = false
         
