@@ -8,14 +8,11 @@
 import UIKit
 import Firebase
 
-enum Levels {
-    case beginner(NameType)
-    case middle(NameType)
-    case advanced(NameType)
-    
-    struct NameType {
-        let numberOfBomb: Int
-        let numberOfCells: CGFloat
+struct SomeType {
+    let numberOfBomb: Int
+    let numberOfCells: CGFloat
+    var numberOfELementsInArray: Int {
+        return Int(numberOfCells) * Int(numberOfCells)
     }
 }
 
@@ -43,26 +40,20 @@ final class StartViewController: UIViewController {
     }
     
     @objc private func advancedButtonTapped() {
-        createViewController(state: Levels.advanced(Levels.NameType(
-                                                        numberOfBomb: 10,
-                                                        numberOfCells: 10)))
+        createViewController(state: SomeType(numberOfBomb: 10, numberOfCells: 10))
     }
     
     @objc private func middleButtonTapped() {
-        createViewController(state: Levels.middle(Levels.NameType(
-                                                    numberOfBomb: 5,
-                                                    numberOfCells: 5)))
+        createViewController(state: SomeType(numberOfBomb: 5, numberOfCells: 5))
     }
     
     @objc private func beginnerButtonTapped() {
-        createViewController(state: Levels.beginner(Levels.NameType(
-                                                        numberOfBomb: 1,
-                                                        numberOfCells: 3)))
+        createViewController(state: SomeType(numberOfBomb: 1, numberOfCells: 3))
     }
     
-    private func createViewController(state: Levels) {
+    private func createViewController(state: SomeType) {
         let vc = GameViewController()
-        vc.state = state
+        vc.someType = state
         navigationController?.pushViewController(vc, animated: false)
     }
     

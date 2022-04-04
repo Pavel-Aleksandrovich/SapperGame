@@ -16,7 +16,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        
         Auth.auth().addStateDidChangeListener { auth, user in
             if user == nil {
                 self.showAuthViewController(AuthViewController())

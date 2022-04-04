@@ -16,21 +16,13 @@ final class GameViewController: UIViewController {
     
     private let layout = UICollectionViewFlowLayout()
     private var collectionView: UICollectionView!
-    private var numberOfBomb = Int()
-    private var numberOfELementsInArray = Int()
-    private var numberOfCells = CGFloat()
     private var arr = [Int]()
     private let alert = CustomAlert()
+    var someType: SomeType!
     
     private var boolArray: [Bool] = []
     private var colorArray: [UIColor] = []
     private var totalToWinSet: Set<Int> = []
-    
-    var state: Levels! {
-        didSet{
-            configureState()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,28 +31,9 @@ final class GameViewController: UIViewController {
         configureView()
     }
     
-    private func configureState() {
-        switch state {
-        case .beginner(let beginner):
-            congifure(type: beginner)
-        case .middle(let middle):
-            congifure(type: middle)
-        case .advanced(let advanced):
-            congifure(type: advanced)
-        case .none:
-            break
-        }
-    }
-    
-    private func congifure(type: Levels.NameType) {
-        numberOfCells = type.numberOfCells
-        numberOfELementsInArray = Int(numberOfCells*numberOfCells)
-        numberOfBomb = type.numberOfBomb
-    }
-    
     private func createArrays() {
-        boolArray = Array<Bool>(repeating: false, count: numberOfELementsInArray)
-        colorArray = Array<UIColor>(repeating: .gray, count: numberOfELementsInArray)
+        boolArray = Array<Bool>(repeating: false, count: someType.numberOfELementsInArray)
+        colorArray = Array<UIColor>(repeating: .gray, count: someType.numberOfELementsInArray)
         
         for i in 0..<arr.count {
             boolArray[arr[i]] = true
@@ -69,8 +42,8 @@ final class GameViewController: UIViewController {
     
     private func createRandomBombs() {
         var randomSet: Set<Int> = []
-        while randomSet.count < numberOfBomb {
-            let uniqueSize = Int.random(in: 0..<numberOfELementsInArray)
+        while randomSet.count < someType.numberOfBomb {
+            let uniqueSize = Int.random(in: 0..<someType.numberOfELementsInArray)
             randomSet.insert(uniqueSize)
         }
         arr = Array(randomSet)
@@ -82,7 +55,7 @@ final class GameViewController: UIViewController {
         colorArray[index] = .green
         collectionView.reloadData()
         
-        if totalToWinSet.count == numberOfELementsInArray - numberOfBomb {
+        if totalToWinSet.count == someType.numberOfELementsInArray - someType.numberOfBomb {
             alert.showAlert(view: self, title: "You are win", complition: {
                 self.navigationController?.popToRootViewController(animated: false)
             })
@@ -103,7 +76,7 @@ extension GameViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = collectionView.frame.width/numberOfCells - Constants.lineSpacing
+        let width = collectionView.frame.width/someType.numberOfCells - Constants.lineSpacing
         return CGSize.init(width: width, height: width)
     }
 }

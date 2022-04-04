@@ -8,10 +8,6 @@
 import UIKit
 import Firebase
 
-enum State {
-    
-}
-
 final class AuthViewController: UIViewController, UITextFieldDelegate {
     
     private let vStackView = AuthStackView()
@@ -22,6 +18,7 @@ final class AuthViewController: UIViewController, UITextFieldDelegate {
     private let resetPasswordButton = AuthButton()
     private let goBackButton = AuthButton()
     private let alert = CustomAlert()
+    let al = Alert()
     
     private var nameConstraints = [NSLayoutConstraint]()
     private var stackConstraints = [NSLayoutConstraint]()
@@ -52,7 +49,6 @@ final class AuthViewController: UIViewController, UITextFieldDelegate {
                 passwordTextField.isHidden = false
                 goBackButton.isHidden = true
                 enterButton.isHidden = false
-//                alert.showAlert(view: self, title: "check your email", complition: nil)
                 
                 resetPasswordButton.customButton(title: "Do you forget your password?", action: #selector(resetPasswordButtonTapped), view: self, color: .blue)
             } else {
@@ -98,6 +94,8 @@ final class AuthViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func enterButtonTapped() {
         signUp.toggle()
+        
+//        al.configureLayout(view: self)
     }
     
     func prin() {
@@ -118,10 +116,15 @@ final class AuthViewController: UIViewController, UITextFieldDelegate {
         if reset {
             let email = emailTextField.text!
             if !email.isEmpty{
+                emailTextField.text! = ""
                 Auth.auth().sendPasswordReset(withEmail: email) { error in
+                    
                     if error == nil{
                         self.alert.showAlert(view: self, title: "check your email", complition: nil)
+                    } else {
+                        print("error")
                     }
+                    
                 }
             }
         }
@@ -137,6 +140,7 @@ final class AuthViewController: UIViewController, UITextFieldDelegate {
         
         if signUp {
             if (!name.isEmpty && !email.isEmpty && !password.isEmpty) {
+                
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
                     if error == nil {
                         if let result = result {
@@ -163,11 +167,6 @@ final class AuthViewController: UIViewController, UITextFieldDelegate {
                 print("bag")
             }
         }
-        
-        
-        
-        
-        
         return true
     }
     
