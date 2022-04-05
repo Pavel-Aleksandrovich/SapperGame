@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  StartViewController.swift
 //  SapperGame
 //
 //  Created by pavel mishanin on 28.03.2022.
@@ -7,6 +7,10 @@
 
 import UIKit
 import Firebase
+
+protocol IStartViewController {
+    func signOut()
+}
 
 struct SomeType {
     let numberOfBomb: Int
@@ -16,7 +20,7 @@ struct SomeType {
     }
 }
 
-final class StartViewController: UIViewController {
+final class StartViewController: UIViewController, IStartViewController {
     
     private let advancedButton = CustomButton()
     private let beginnerButton = CustomButton()
@@ -63,6 +67,10 @@ final class StartViewController: UIViewController {
     }
     
     @objc private func exitButtonTapped() {
+        signOut()
+    }
+    
+    func signOut() {
         do{
             try Auth.auth().signOut()
         }catch {

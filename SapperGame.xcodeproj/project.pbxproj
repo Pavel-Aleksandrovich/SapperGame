@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		847BA83827F5594600DDE673 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83727F5594600DDE673 /* AuthViewController.swift */; };
+		847BA83827F5594600DDE673 /* AuthViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83727F5594600DDE673 /* AuthViewControllerImpl.swift */; };
 		847BA83D27F5616500DDE673 /* AuthStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83C27F5616500DDE673 /* AuthStackView.swift */; };
 		847BA84027F5673800DDE673 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83F27F5673800DDE673 /* AuthButton.swift */; };
 		847BA84327F571AF00DDE673 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA84227F571AF00DDE673 /* AuthTextField.swift */; };
@@ -16,9 +16,23 @@
 		847BA84A27F5B57600DDE673 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 847BA84927F5B57600DDE673 /* FirebaseAuth */; };
 		847BA84C27F5B57600DDE673 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 847BA84B27F5B57600DDE673 /* FirebaseFirestore */; };
 		847BA84E27F5B57600DDE673 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 847BA84D27F5B57600DDE673 /* FirebaseDatabase */; };
-		847BA85327F711FD00DDE673 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA85227F711FD00DDE673 /* File.swift */; };
-		847BA85527FAC8E300DDE673 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA85427FAC8E300DDE673 /* EntryViewController.swift */; };
-		847BA85727FACB6700DDE673 /* ResertPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA85627FACB6700DDE673 /* ResertPasswordViewController.swift */; };
+		847BA85327F711FD00DDE673 /* a.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA85227F711FD00DDE673 /* a.swift */; };
+		847BA85527FAC8E300DDE673 /* EntryViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA85427FAC8E300DDE673 /* EntryViewControllerImpl.swift */; };
+		847BA85727FACB6700DDE673 /* ResetViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA85627FACB6700DDE673 /* ResetViewControllerImpl.swift */; };
+		847BA85927FB005B00DDE673 /* CustomFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA85827FB005B00DDE673 /* CustomFirebase.swift */; };
+		847D31FB27FBE31800C59F1E /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D31FA27FBE31800C59F1E /* AuthPresenter.swift */; };
+		847D320027FBE55800C59F1E /* AuthAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D31FF27FBE55800C59F1E /* AuthAssembler.swift */; };
+		847D320227FBE68800C59F1E /* AuthRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D320127FBE68800C59F1E /* AuthRouterImpl.swift */; };
+		847D320427FBE74800C59F1E /* EntryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D320327FBE74800C59F1E /* EntryPresenter.swift */; };
+		847D320627FBE86D00C59F1E /* EntryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D320527FBE86D00C59F1E /* EntryRouter.swift */; };
+		847D320827FBE8BF00C59F1E /* EntryAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D320727FBE8BF00C59F1E /* EntryAssembler.swift */; };
+		847D320A27FBE9BA00C59F1E /* ResertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D320927FBE9BA00C59F1E /* ResertPresenter.swift */; };
+		847D320C27FBEA0A00C59F1E /* ResertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D320B27FBEA0A00C59F1E /* ResertRouter.swift */; };
+		847D320E27FBEA2F00C59F1E /* ResertAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D320D27FBEA2F00C59F1E /* ResertAssembler.swift */; };
+		847D321127FBF29900C59F1E /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D321027FBF29900C59F1E /* Interactor.swift */; };
+		847D321327FC0A6800C59F1E /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D321227FC0A6800C59F1E /* AuthView.swift */; };
+		847D321527FC183A00C59F1E /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D321427FC183A00C59F1E /* EntryView.swift */; };
+		847D321727FC1BED00C59F1E /* ResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D321627FC1BED00C59F1E /* ResetView.swift */; };
 		847E0A3927F1680B0067E936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A3827F1680B0067E936 /* AppDelegate.swift */; };
 		847E0A3B27F1680B0067E936 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A3A27F1680B0067E936 /* SceneDelegate.swift */; };
 		847E0A3D27F1680B0067E936 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A3C27F1680B0067E936 /* GameViewController.swift */; };
@@ -32,14 +46,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		847BA83727F5594600DDE673 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		847BA83727F5594600DDE673 /* AuthViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerImpl.swift; sourceTree = "<group>"; };
 		847BA83C27F5616500DDE673 /* AuthStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStackView.swift; sourceTree = "<group>"; };
 		847BA83F27F5673800DDE673 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		847BA84227F571AF00DDE673 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		847BA84427F5B41300DDE673 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		847BA85227F711FD00DDE673 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		847BA85427FAC8E300DDE673 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
-		847BA85627FACB6700DDE673 /* ResertPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResertPasswordViewController.swift; sourceTree = "<group>"; };
+		847BA85227F711FD00DDE673 /* a.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = a.swift; sourceTree = "<group>"; };
+		847BA85427FAC8E300DDE673 /* EntryViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewControllerImpl.swift; sourceTree = "<group>"; };
+		847BA85627FACB6700DDE673 /* ResetViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewControllerImpl.swift; sourceTree = "<group>"; };
+		847BA85827FB005B00DDE673 /* CustomFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFirebase.swift; sourceTree = "<group>"; };
+		847D31FA27FBE31800C59F1E /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		847D31FF27FBE55800C59F1E /* AuthAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAssembler.swift; sourceTree = "<group>"; };
+		847D320127FBE68800C59F1E /* AuthRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouterImpl.swift; sourceTree = "<group>"; };
+		847D320327FBE74800C59F1E /* EntryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPresenter.swift; sourceTree = "<group>"; };
+		847D320527FBE86D00C59F1E /* EntryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRouter.swift; sourceTree = "<group>"; };
+		847D320727FBE8BF00C59F1E /* EntryAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAssembler.swift; sourceTree = "<group>"; };
+		847D320927FBE9BA00C59F1E /* ResertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResertPresenter.swift; sourceTree = "<group>"; };
+		847D320B27FBEA0A00C59F1E /* ResertRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResertRouter.swift; sourceTree = "<group>"; };
+		847D320D27FBEA2F00C59F1E /* ResertAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResertAssembler.swift; sourceTree = "<group>"; };
+		847D321027FBF29900C59F1E /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		847D321227FC0A6800C59F1E /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		847D321427FC183A00C59F1E /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		847D321627FC1BED00C59F1E /* ResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetView.swift; sourceTree = "<group>"; };
 		847E0A3527F1680B0067E936 /* SapperGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SapperGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847E0A3827F1680B0067E936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847E0A3A27F1680B0067E936 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,9 +100,9 @@
 		847BA83927F5611000DDE673 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				847BA83727F5594600DDE673 /* AuthViewController.swift */,
-				847BA85427FAC8E300DDE673 /* EntryViewController.swift */,
-				847BA85627FACB6700DDE673 /* ResertPasswordViewController.swift */,
+				847D31FC27FBE41400C59F1E /* Auth */,
+				847D31FD27FBE42E00C59F1E /* Entry */,
+				847D31FE27FBE43700C59F1E /* Resert */,
 				847BA83E27F5672900DDE673 /* Custom UI */,
 			);
 			path = Auth;
@@ -104,7 +132,7 @@
 				847BA83C27F5616500DDE673 /* AuthStackView.swift */,
 				847BA83F27F5673800DDE673 /* AuthButton.swift */,
 				847BA84227F571AF00DDE673 /* AuthTextField.swift */,
-				847BA85227F711FD00DDE673 /* File.swift */,
+				847BA85227F711FD00DDE673 /* a.swift */,
 			);
 			path = "Custom UI";
 			sourceTree = "<group>";
@@ -116,6 +144,50 @@
 				847E0A5227F2FF960067E936 /* CustomStackView.swift */,
 			);
 			path = "Custom UI";
+			sourceTree = "<group>";
+		};
+		847D31FC27FBE41400C59F1E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				847D321227FC0A6800C59F1E /* AuthView.swift */,
+				847BA83727F5594600DDE673 /* AuthViewControllerImpl.swift */,
+				847D31FA27FBE31800C59F1E /* AuthPresenter.swift */,
+				847D320127FBE68800C59F1E /* AuthRouterImpl.swift */,
+				847D31FF27FBE55800C59F1E /* AuthAssembler.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		847D31FD27FBE42E00C59F1E /* Entry */ = {
+			isa = PBXGroup;
+			children = (
+				847D321427FC183A00C59F1E /* EntryView.swift */,
+				847BA85427FAC8E300DDE673 /* EntryViewControllerImpl.swift */,
+				847D320327FBE74800C59F1E /* EntryPresenter.swift */,
+				847D320527FBE86D00C59F1E /* EntryRouter.swift */,
+				847D320727FBE8BF00C59F1E /* EntryAssembler.swift */,
+			);
+			path = Entry;
+			sourceTree = "<group>";
+		};
+		847D31FE27FBE43700C59F1E /* Resert */ = {
+			isa = PBXGroup;
+			children = (
+				847D321627FC1BED00C59F1E /* ResetView.swift */,
+				847BA85627FACB6700DDE673 /* ResetViewControllerImpl.swift */,
+				847D320927FBE9BA00C59F1E /* ResertPresenter.swift */,
+				847D320B27FBEA0A00C59F1E /* ResertRouter.swift */,
+				847D320D27FBEA2F00C59F1E /* ResertAssembler.swift */,
+			);
+			path = Resert;
+			sourceTree = "<group>";
+		};
+		847D320F27FBF28400C59F1E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				847D321027FBF29900C59F1E /* Interactor.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		847E0A2C27F1680B0067E936 = {
@@ -138,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				847E0A5627F30E590067E936 /* Scenes */,
-				847E0A5827F30EB70067E936 /* Helpers */,
+				847E0A5827F30EB70067E936 /* Common */,
 				847E0A5727F30E960067E936 /* Application */,
 				847E0A5927F30ED20067E936 /* Resources */,
 			);
@@ -164,12 +236,14 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		847E0A5827F30EB70067E936 /* Helpers */ = {
+		847E0A5827F30EB70067E936 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				847D320F27FBF28400C59F1E /* Domain */,
+				847BA85827FB005B00DDE673 /* CustomFirebase.swift */,
 				847E0A5427F304070067E936 /* CustomAlert.swift */,
 			);
-			path = Helpers;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		847E0A5927F30ED20067E936 /* Resources */ = {
@@ -262,19 +336,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847D320E27FBEA2F00C59F1E /* ResertAssembler.swift in Sources */,
 				847E0A4F27F1AD0F0067E936 /* StartViewController.swift in Sources */,
 				847BA84327F571AF00DDE673 /* AuthTextField.swift in Sources */,
 				847E0A3D27F1680B0067E936 /* GameViewController.swift in Sources */,
-				847BA85527FAC8E300DDE673 /* EntryViewController.swift in Sources */,
+				847BA85527FAC8E300DDE673 /* EntryViewControllerImpl.swift in Sources */,
+				847D321727FC1BED00C59F1E /* ResetView.swift in Sources */,
 				847E0A5127F2DE4D0067E936 /* CustomButton.swift in Sources */,
+				847D320427FBE74800C59F1E /* EntryPresenter.swift in Sources */,
+				847D320A27FBE9BA00C59F1E /* ResertPresenter.swift in Sources */,
+				847D321327FC0A6800C59F1E /* AuthView.swift in Sources */,
+				847BA85927FB005B00DDE673 /* CustomFirebase.swift in Sources */,
 				847E0A4D27F16B1B0067E936 /* GameCell.swift in Sources */,
+				847D321527FC183A00C59F1E /* EntryView.swift in Sources */,
+				847D320027FBE55800C59F1E /* AuthAssembler.swift in Sources */,
+				847D320827FBE8BF00C59F1E /* EntryAssembler.swift in Sources */,
 				847BA83D27F5616500DDE673 /* AuthStackView.swift in Sources */,
+				847D320227FBE68800C59F1E /* AuthRouterImpl.swift in Sources */,
+				847D320C27FBEA0A00C59F1E /* ResertRouter.swift in Sources */,
 				847E0A5327F2FF960067E936 /* CustomStackView.swift in Sources */,
 				847E0A3927F1680B0067E936 /* AppDelegate.swift in Sources */,
-				847BA85727FACB6700DDE673 /* ResertPasswordViewController.swift in Sources */,
+				847BA85727FACB6700DDE673 /* ResetViewControllerImpl.swift in Sources */,
+				847D321127FBF29900C59F1E /* Interactor.swift in Sources */,
 				847E0A3B27F1680B0067E936 /* SceneDelegate.swift in Sources */,
-				847BA83827F5594600DDE673 /* AuthViewController.swift in Sources */,
-				847BA85327F711FD00DDE673 /* File.swift in Sources */,
+				847BA83827F5594600DDE673 /* AuthViewControllerImpl.swift in Sources */,
+				847D320627FBE86D00C59F1E /* EntryRouter.swift in Sources */,
+				847D31FB27FBE31800C59F1E /* AuthPresenter.swift in Sources */,
+				847BA85327F711FD00DDE673 /* a.swift in Sources */,
 				847BA84027F5673800DDE673 /* AuthButton.swift in Sources */,
 				847E0A5527F304070067E936 /* CustomAlert.swift in Sources */,
 			);

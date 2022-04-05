@@ -10,13 +10,13 @@ import Firebase
 
 final class AuthTextField: UITextField {
     
-    private var view: UIViewController?
+    private var view: UIView?
     
     var textOrEmptyString: String {
         return text ?? ""
     }
     
-    func configureTextField(view: UIViewController, placeholder: String) {
+    func configureTextField(view: UIView, placeholder: String) {
         self.view = view
 //        self.delegate = self
         self.placeholder = placeholder
@@ -34,10 +34,10 @@ final class AuthTextField: UITextField {
     private func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
-        view?.view.addGestureRecognizer(tap)
+        view?.addGestureRecognizer(tap)
     }
     
     @objc private func dismissKeyboard() {
-        view?.view.endEditing(true)
+        view?.endEditing(true)
     }
 }

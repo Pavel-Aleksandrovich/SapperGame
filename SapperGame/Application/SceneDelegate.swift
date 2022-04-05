@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         Auth.auth().addStateDidChangeListener { auth, user in
             if user == nil {
-                self.showAuthViewController(AuthViewController())
+                self.showAuthViewController(AuthAssembler.assembly())
             } else {
                 self.showAuthViewController(StartViewController())
             }

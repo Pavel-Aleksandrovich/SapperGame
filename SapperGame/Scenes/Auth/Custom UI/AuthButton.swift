@@ -13,7 +13,7 @@ final class AuthButton: UIButton {
     
     func customButton(title: String,
                       action: Selector,
-                      view: UIViewController,
+                      view: UIView,
                       color: UIColor) {
         
         self.clipsToBounds = true
