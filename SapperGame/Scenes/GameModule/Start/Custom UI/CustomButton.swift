@@ -12,7 +12,7 @@ final class CustomButton: UIButton {
     
     func customButton(title: String,
                       action: Selector,
-                      view: UIViewController,
+                      view: UIView,
                       color: UIColor) {
         self.clipsToBounds = true
         self.layer.cornerRadius = 30

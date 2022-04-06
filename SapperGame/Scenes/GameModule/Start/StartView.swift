@@ -1,38 +1,33 @@
 //
-//  StartViewController.swift
+//  StartView.swift
 //  SapperGame
 //
-//  Created by pavel mishanin on 28.03.2022.
+//  Created by pavel mishanin on 06.04.2022.
 //
 
 import UIKit
-import Firebase
 
-protocol IStartViewController {
-    func signOut()
+protocol StartViewDelegate: AnyObject {
+    func createViewController(state: SomeType)
 }
 
-struct SomeType {
-    let numberOfBomb: Int
-    let numberOfCells: CGFloat
-    var numberOfELementsInArray: Int {
-        return Int(numberOfCells) * Int(numberOfCells)
-    }
-}
-
-final class StartViewController: UIViewController, IStartViewController {
+final class StartView: UIView {
     
+    weak var delegate: StartViewDelegate?
     private let advancedButton = CustomButton()
     private let beginnerButton = CustomButton()
     private let middleButton = CustomButton()
     private let vStackView = CustomStackView()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init() {
+        super.init(frame: CGRect())
+        configureAdvancedButton()
         configureView()
         configureLayoutConstraints()
-        configureAdvancedButton()
-        createBarButtonItem()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func configureAdvancedButton() {
@@ -56,42 +51,22 @@ final class StartViewController: UIViewController, IStartViewController {
     }
     
     private func createViewController(state: SomeType) {
-        let vc = GameViewController()
-        vc.someType = state
-        navigationController?.pushViewController(vc, animated: false)
-    }
-    
-    private func createBarButtonItem() {
-        let exitBarButton = UIBarButtonItem(title: "Exit", style: .done, target: self, action: #selector(exitButtonTapped))
-        navigationItem.leftBarButtonItem = exitBarButton
-    }
-    
-    @objc private func exitButtonTapped() {
-        signOut()
-    }
-    
-    func signOut() {
-        do{
-            try Auth.auth().signOut()
-        }catch {
-            print("error")
-        }
+        delegate?.createViewController(state: state)
     }
     
     private func configureView() {
-        title = "SapperGame"
-        view.backgroundColor = .white
+        backgroundColor = .white
         
-        view.addSubview(vStackView)
+        addSubview(vStackView)
         vStackView.addArrangedSubviews([advancedButton, middleButton, beginnerButton])
     }
     
     private func configureLayoutConstraints() {
         NSLayoutConstraint.activate([
             
-            vStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
-            vStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            vStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            vStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            vStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40),
+            vStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             advancedButton.widthAnchor.constraint(equalTo: vStackView.widthAnchor),
             advancedButton.heightAnchor.constraint(equalToConstant: 60),

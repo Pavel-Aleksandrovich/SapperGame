@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if user == nil {
                 self.showAuthViewController(AuthAssembler.assembly())
             } else {
-                self.showAuthViewController(StartViewController())
+                self.showAuthViewController(StartAssembler.assembly())
             }
         }
     }

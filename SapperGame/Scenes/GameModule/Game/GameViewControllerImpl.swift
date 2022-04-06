@@ -7,27 +7,45 @@
 
 import UIKit
 
-final class GameViewController: UIViewController {
+final class GameViewControllerImpl: UIViewController, GameViewController {
     
     private enum Constants {
         static let cellIdentifier = "cellIdentifier"
         static let lineSpacing: CGFloat = 1
     }
     
+    private let presenter: GamePresenter
     private let layout = UICollectionViewFlowLayout()
     private var collectionView: UICollectionView!
-    private var arr = [Int]()
     private let alert = CustomAlert()
-    var someType: SomeType!
-    
+    private var arr = [Int]()
     private var boolArray: [Bool] = []
     private var colorArray: [UIColor] = []
     private var totalToWinSet: Set<Int> = []
     
+    var someType: SomeType = SomeType(numberOfBomb: 1, numberOfCells: 3) {
+        didSet {
+            createRandomBombs()
+            createArrays()
+        }
+    }
+    
+    init(presenter: GamePresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        super.loadView()
+        presenter.onViewAttached(view: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        createRandomBombs()
-        createArrays()
         configureView()
     }
     
@@ -57,7 +75,7 @@ final class GameViewController: UIViewController {
         
         if totalToWinSet.count == someType.numberOfELementsInArray - someType.numberOfBomb {
             alert.showAlert(view: self, title: "You are win", complition: {
-                self.navigationController?.popToRootViewController(animated: false)
+                self.presenter.popToRootButtonTapped()
             })
         }
     }
@@ -67,12 +85,12 @@ final class GameViewController: UIViewController {
         collectionView.reloadData()
         
         alert.showAlert(view: self, title: "Game Over", complition: {
-            self.navigationController?.popToRootViewController(animated: false)
+            self.presenter.popToRootButtonTapped()
         })
     }
 }
 
-extension GameViewController: UICollectionViewDelegateFlowLayout {
+extension GameViewControllerImpl: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -81,7 +99,7 @@ extension GameViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension GameViewController: UICollectionViewDelegate {
+extension GameViewControllerImpl: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -93,7 +111,7 @@ extension GameViewController: UICollectionViewDelegate {
     }
 }
 
-extension GameViewController: UICollectionViewDataSource {
+extension GameViewControllerImpl: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorArray.count
@@ -109,7 +127,7 @@ extension GameViewController: UICollectionViewDataSource {
     }
 }
 
-private extension GameViewController {
+private extension GameViewControllerImpl {
     
     func configureView() {
         title = "SapperGame"
