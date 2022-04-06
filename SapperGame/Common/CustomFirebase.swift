@@ -15,7 +15,7 @@ enum ErrorMessage: String, Error {
     case enterError = "Enter error. Please try again"
     case signOutError = "SignOut error. Please try again"
     case signInError = "SignIn error. Please try again"
-    case resetPasswordError = "Reset password error. Please try again"
+    case resetPasswordError = "Reset password error. This is email is not exist"
 }
 
 final class CustomFirebase {

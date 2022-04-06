@@ -30,11 +30,14 @@ final class ResetView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func configureKeyboardToolbar() {
+        emailTextField.keyboardToolbar(textFields: [emailTextField], doneAction: #selector(resetPasswordButtonTapped))
+    }
+    
     private func configureView() {
         backgroundColor = .white
         
         emailTextField.configureTextField(view: self, placeholder: "email")
-        
         resertButton.customButton(title: "Resert", action: #selector(resetPasswordButtonTapped), view: self, color: .blue)
         popToRootButton.customButton(title: "Go back", action: #selector(popToRootButtonTapped), view: self, color: .blue)
         

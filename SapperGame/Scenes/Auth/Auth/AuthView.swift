@@ -26,10 +26,15 @@ final class AuthView: UIView {
         super.init(frame: CGRect())
         configureView()
         configureLayoutHierarchy()
+        configureKeyboardToolbar()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureKeyboardToolbar() {
+        nameTextField.keyboardToolbar(textFields: [nameTextField, emailTextField, passwordTextField], doneAction: #selector(authButtonTapped))
     }
     
     private func configureView() {
