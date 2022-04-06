@@ -18,17 +18,6 @@ final class GameViewControllerImpl: UIViewController, GameViewController {
     private let layout = UICollectionViewFlowLayout()
     private var collectionView: UICollectionView!
     private let alert = CustomAlert()
-    private var arr = [Int]()
-    private var boolArray: [Bool] = []
-    private var colorArray: [UIColor] = []
-    private var totalToWinSet: Set<Int> = []
-    
-    var someType: SomeType = SomeType(numberOfBomb: 1, numberOfCells: 3) {
-        didSet {
-            createRandomBombs()
-            createArrays()
-        }
-    }
     
     init(presenter: GamePresenter) {
         self.presenter = presenter
@@ -49,52 +38,23 @@ final class GameViewControllerImpl: UIViewController, GameViewController {
         configureView()
     }
     
-    private func createArrays() {
-        boolArray = Array<Bool>(repeating: false, count: someType.numberOfELementsInArray)
-        colorArray = Array<UIColor>(repeating: .gray, count: someType.numberOfELementsInArray)
-        
-        for i in 0..<arr.count {
-            boolArray[arr[i]] = true
-        }
-    }
-    
-    private func createRandomBombs() {
-        var randomSet: Set<Int> = []
-        while randomSet.count < someType.numberOfBomb {
-            let uniqueSize = Int.random(in: 0..<someType.numberOfELementsInArray)
-            randomSet.insert(uniqueSize)
-        }
-        arr = Array(randomSet)
-        print(randomSet)
-    }
-    
-    private func notBombTapped(index: Int) {
-        totalToWinSet.insert(index)
-        colorArray[index] = .green
+    func createAlert(title: String) {
         collectionView.reloadData()
-        
-        if totalToWinSet.count == someType.numberOfELementsInArray - someType.numberOfBomb {
-            alert.showAlert(view: self, title: "You are win", complition: {
-                self.presenter.popToRootButtonTapped()
-            })
-        }
-    }
-    
-    private func bombTapped(index: Int) {
-        colorArray[index] = .red
-        collectionView.reloadData()
-        
-        alert.showAlert(view: self, title: "Game Over", complition: {
+        alert.showAlert(view: self, title: title, complition: {
             self.presenter.popToRootButtonTapped()
         })
+    }
+    
+    func reloadData() {
+        collectionView.reloadData()
     }
 }
 
 extension GameViewControllerImpl: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let width = collectionView.frame.width/someType.numberOfCells - Constants.lineSpacing
+        let const = presenter.getConstant()
+        let width = collectionView.frame.width/const - Constants.lineSpacing
         return CGSize.init(width: width, height: width)
     }
 }
@@ -102,25 +62,20 @@ extension GameViewControllerImpl: UICollectionViewDelegateFlowLayout {
 extension GameViewControllerImpl: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if boolArray[indexPath.row] {
-            bombTapped(index: indexPath.row)
-        } else {
-            notBombTapped(index: indexPath.row)
-        }
+        presenter.didSelectItemAt(index: indexPath.row)
     }
 }
 
 extension GameViewControllerImpl: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return colorArray.count
+        return presenter.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellIdentifier, for: indexPath) as! GameCell
         
-        let color = colorArray[indexPath.item]
+        let color = presenter.getColor(index: indexPath.item)
         cell.configure(color: color)
         
         return cell
