@@ -10,7 +10,7 @@ import UIKit
 final class CustomAlert {
     
     func showAlert(view: UIViewController, title: String, complition: ( () -> ())?) {
-        
+        DispatchQueue.main.async {
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
     
         let action = UIAlertAction(title: "Ok", style: .default) {_ in
@@ -18,6 +18,9 @@ final class CustomAlert {
         }
         alertController.addAction(action)
         
-        view.present(alertController, animated: false, completion: nil)
+        
+            view.present(alertController, animated: false, completion: nil)
+        }
+        
     }
 }

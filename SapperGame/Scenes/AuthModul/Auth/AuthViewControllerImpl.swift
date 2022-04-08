@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 final class AuthViewControllerImpl: UIViewController, AuthViewController, AuthViewDelegate {
     
@@ -27,11 +26,11 @@ final class AuthViewControllerImpl: UIViewController, AuthViewController, AuthVi
     override func loadView() {
         super.loadView()
         view = superView
-        presenter.onViewAttached(view: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.onViewAttached(view: self)
         configureView()
     }
     
@@ -51,3 +50,4 @@ final class AuthViewControllerImpl: UIViewController, AuthViewController, AuthVi
         presenter.createUser(name: name, email: email, password: password)
     }
 }
+

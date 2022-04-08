@@ -30,6 +30,7 @@ final class AuthPresenterImpl: AuthPresenter {
     
     func onViewAttached(view: AuthViewController) {
         self.view = view
+        checkInternetConnection()
     }
     
     func entryButtonTapped() {
@@ -39,6 +40,12 @@ final class AuthPresenterImpl: AuthPresenter {
     func createUser(name: String, email: String, password: String) {
         interactor.createUser(name: name, email: email, password: password) { errorMessage in
             self.view?.createAlert(title: errorMessage.rawValue)
+        }
+    }
+    
+    private func checkInternetConnection() {
+        interactor.checkInternetConnection { bool in
+            self.view?.createAlert(title: "\(bool)")
         }
     }
 }

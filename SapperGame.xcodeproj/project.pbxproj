@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		847211E727FF35A4008C91A9 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847211E627FF35A4008C91A9 /* InternetConnection.swift */; };
 		847BA83827F5594600DDE673 /* AuthViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83727F5594600DDE673 /* AuthViewControllerImpl.swift */; };
 		847BA83D27F5616500DDE673 /* AuthStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83C27F5616500DDE673 /* AuthStackView.swift */; };
 		847BA84027F5673800DDE673 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83F27F5673800DDE673 /* AuthButton.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		847211E627FF35A4008C91A9 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
 		847BA83727F5594600DDE673 /* AuthViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerImpl.swift; sourceTree = "<group>"; };
 		847BA83C27F5616500DDE673 /* AuthStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStackView.swift; sourceTree = "<group>"; };
 		847BA83F27F5673800DDE673 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				847D320F27FBF28400C59F1E /* Domain */,
 				847BA85827FB005B00DDE673 /* CustomFirebase.swift */,
+				847211E627FF35A4008C91A9 /* InternetConnection.swift */,
 				847E0A5427F304070067E936 /* CustomAlert.swift */,
 			);
 			path = Common;
@@ -387,6 +390,7 @@
 				847D321527FC183A00C59F1E /* EntryView.swift in Sources */,
 				847D320027FBE55800C59F1E /* AuthAssembler.swift in Sources */,
 				847D320827FBE8BF00C59F1E /* EntryAssembler.swift in Sources */,
+				847211E727FF35A4008C91A9 /* InternetConnection.swift in Sources */,
 				847BA83D27F5616500DDE673 /* AuthStackView.swift in Sources */,
 				847D320227FBE68800C59F1E /* AuthRouterImpl.swift in Sources */,
 				847D320C27FBEA0A00C59F1E /* ResertRouter.swift in Sources */,
