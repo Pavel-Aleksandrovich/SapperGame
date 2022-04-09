@@ -42,23 +42,8 @@ final class InteractorImpl: Interactor {
     
     func checkInternetConnection(complition: @escaping (Bool) -> ()) {
         
-//        switch internetConnection.isNetworkAvailable() {
-//        case true:
-//            complition(true)
-//        case false:
-//            complition(false)
-//        }
-        internetConnection.addInternetStatusListener { status in
-            print(status)
-        }
-        
-        internetConnection.networkAvailableHandler = { bool in
-            switch bool {
-            case true:
-                complition(true)
-            case false:
-                complition(false)
-            }
+        internetConnection.checkInternetStatus { status in
+            complition(status)
         }
     }
 }
