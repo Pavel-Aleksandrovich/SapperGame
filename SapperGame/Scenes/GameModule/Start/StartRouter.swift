@@ -8,14 +8,14 @@
 import UIKit
 
 protocol StartRouter {
-    func showGameViewController(state: SomeType)
+    func routeToGameScreen(state: SomeType)
 }
 
 final class StartRouterImpl: StartRouter {
     
     weak var controller: UIViewController?
     
-    func showGameViewController(state: SomeType) {
+    func routeToGameScreen(state: SomeType) {
         let vc = GameAssembler.assembly(state: state)
         controller?.navigationController?.pushViewController(vc, animated: false)
     }

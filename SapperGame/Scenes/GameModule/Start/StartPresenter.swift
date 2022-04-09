@@ -9,12 +9,12 @@ import UIKit
 
 protocol StartPresenter {
     func onViewAttached(view: StartViewController)
-    func signOut()
-    func showGameViewController(state: SomeType)
+    func onSignOutTapped()
+    func onLevelButtonTapped(state: SomeType)
 }
 
 protocol StartViewController: AnyObject {
-    func createAlert(title: String)
+    func showAlert(title: String)
 }
 
 final class StartPresenterImpl: StartPresenter {
@@ -32,13 +32,13 @@ final class StartPresenterImpl: StartPresenter {
         self.view = view
     }
     
-    func signOut() {
+    func onSignOutTapped() {
         interactor.signOut { errorMessage in
-            self.view?.createAlert(title: errorMessage.rawValue)
+            self.view?.showAlert(title: errorMessage.rawValue)
         }
     }
-    
-    func showGameViewController(state: SomeType) {
-        router.showGameViewController(state: state)
+    // TODO: переминовать все в соответсвии routeToGameScreen
+    func onLevelButtonTapped(state: SomeType) {
+        router.routeToGameScreen(state: state)
     }
 }

@@ -19,9 +19,12 @@ enum ErrorMessage: String, Error {
 }
 
 final class CustomFirebase {
-    
+    //база только сохраняет, validation пустой или не пустой содержится в Interactore
+    // create class userValidator(проверка пароля)
+    //isPasswordValid, and so on.
+    //выкидывать ошибку и работать с ней в другом месте а не здесь
     func sendPasswordReset(email: String, complition: @escaping (Result<String, ErrorMessage>) -> ()) {
-        if !email.isEmpty{
+        if !email.isEmpty {
             Auth.auth().sendPasswordReset(withEmail: email) { error in
                 if error == nil{
                     complition(.success("check your email"))

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol StartViewDelegate: AnyObject {
-    func createViewController(state: SomeType)
+    func onLevelButtonTapped(state: SomeType)
 }
 
 final class StartView: UIView {
@@ -37,21 +37,21 @@ final class StartView: UIView {
         
         beginnerButton.customButton(title: "Beginner", action: #selector(beginnerButtonTapped), view: self, color: .green)
     }
-    
+    // TODO: прокидывать не структуру а енам и в следующем экране уже решать какой кейс пришел
     @objc private func advancedButtonTapped() {
-        createViewController(state: SomeType(numberOfBomb: 10, numberOfCells: 10))
+        onLevelButtonTapped(state: SomeType(numberOfBomb: 10, numberOfCells: 10))
     }
     
     @objc private func middleButtonTapped() {
-        createViewController(state: SomeType(numberOfBomb: 5, numberOfCells: 5))
+        onLevelButtonTapped(state: SomeType(numberOfBomb: 5, numberOfCells: 5))
     }
     
     @objc private func beginnerButtonTapped() {
-        createViewController(state: SomeType(numberOfBomb: 1, numberOfCells: 3))
+        onLevelButtonTapped(state: SomeType(numberOfBomb: 1, numberOfCells: 3))
     }
     
-    private func createViewController(state: SomeType) {
-        delegate?.createViewController(state: state)
+    private func onLevelButtonTapped(state: SomeType) {
+        delegate?.onLevelButtonTapped(state: state)
     }
     
     private func configureView() {

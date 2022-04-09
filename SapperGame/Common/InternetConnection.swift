@@ -10,45 +10,31 @@ import Network
 
 final class InternetConnection {
     
-    private var pathMonitor: NWPathMonitor!
-    private var path: NWPath?
+    private let pathMonitor = NWPathMonitor()
     
-    
-    private var networkAvailable: Bool = false {
-        didSet {
-            networkAvailableHandler?(networkAvailable)
-        }
-    }
-    
-    var networkAvailableHandler: ((Bool) -> ())?
-    
-    private lazy var pathUpdateHandler: ((NWPath) -> ()) = { path in
-        self.path = path
-        
-        if path.status == NWPath.Status.satisfied {
-            self.networkAvailable = false
-        } else  {
-            self.networkAvailable = true
-        }
-    }
-    
-    private let backgroudQueue = DispatchQueue.global(qos: .background)
+    // TODO: make private
+    var networkAvailableHandler: ((Bool) -> ())? = nil
     
     init() {
-        pathMonitor = NWPathMonitor()
-        pathMonitor.pathUpdateHandler = self.pathUpdateHandler
-        pathMonitor.start(queue: backgroudQueue)
-//        networkAvailable = isNetworkAvailable()
+        pathMonitor.pathUpdateHandler = { path in
+            
+            let status = path.status == NWPath.Status.satisfied
+            self.networkAvailableHandler?(!status)
+        }
     }
     
-    func isNetworkAvailable() -> Bool {
-        if let path = self.path {
-            if path.status == NWPath.Status.satisfied {
-                networkAvailable = true
-                return true
-            }
-        }
-        networkAvailable = false
-        return false
+    func addInternetStatusListener(complition: @escaping(Bool) -> ()) {
+        networkAvailableHandler = complition
+        pathMonitor.start(queue: DispatchQueue.global(qos: .background))
+    }
+    
+    func removeInternetStatusListener() {
+        networkAvailableHandler = nil
+        pathMonitor.cancel()
+    }
+    
+    func getInternetStatus() -> Bool {
+        return pathMonitor.currentPath.status == NWPath.Status.satisfied
     }
 }
+

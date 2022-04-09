@@ -45,23 +45,23 @@ final class StartViewControllerImpl: UIViewController, StartViewController, Star
     }
     
     private func createExitBarButtonItem() {
-        let exitBarButton = UIBarButtonItem(title: "Exit", style: .done, target: self, action: #selector(exitButtonTapped))
+        let exitBarButton = UIBarButtonItem(title: "Exit", style: .done, target: self, action: #selector(onSignOutTapped))
         navigationItem.leftBarButtonItem = exitBarButton
     }
     
-    @objc private func exitButtonTapped() {
-        presenter.signOut()
+    @objc private func onSignOutTapped() {
+        presenter.onSignOutTapped()
     }
     
-    func createAlert(title: String) {
+    func showAlert(title: String) {
         alert.showAlert(view: self, title: title, complition: nil)
     }
     
     private func configureView() {
         title = "SapperGame"
     }
-    
-    func createViewController(state: SomeType) {
-        presenter.showGameViewController(state: state)
+    // TODO: переминовать презентеры в соответсвии presenter.onLevelButtonTapped
+    func onLevelButtonTapped(state: SomeType) {
+        presenter.onLevelButtonTapped(state: state)
     }
 }

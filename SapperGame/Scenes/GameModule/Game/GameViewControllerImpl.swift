@@ -37,7 +37,7 @@ final class GameViewControllerImpl: UIViewController, GameViewController {
         super.viewDidLoad()
         configureView()
     }
-    
+    //прееминовать алерт
     func createAlert(title: String) {
         collectionView.reloadData()
         alert.showAlert(view: self, title: title, complition: {
