@@ -16,41 +16,33 @@ enum ErrorMessage: String, Error {
     case signOutError = "SignOut error. Please try again"
     case signInError = "SignIn error. Please try again"
     case resetPasswordError = "Reset password error. This is email is not exist"
+    case shortPassword = "Too short Password. Must be 7 characters"
 }
 
 final class CustomFirebase {
-    //база только сохраняет, validation пустой или не пустой содержится в Interactore
-    // create class userValidator(проверка пароля)
-    //isPasswordValid, and so on.
-    //выкидывать ошибку и работать с ней в другом месте а не здесь
-    func sendPasswordReset(email: String, complition: @escaping (Result<String, ErrorMessage>) -> ()) {
-        if !email.isEmpty {
-            Auth.auth().sendPasswordReset(withEmail: email) { error in
-                if error == nil{
-                    complition(.success("check your email"))
-                } else {
-                    complition(.failure(.resetPasswordError))
-                }
+    
+    func sendPasswordReset(email: String, complition: @escaping (ValirationResult) -> ()) {
+        
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if error == nil{
+                complition(.success)
+            } else {
+                complition(.failure(.resetPasswordError))
             }
-        } else {
-            complition(.failure(.emptyFields))
         }
     }
     
     func signIn(email: String, password: String, complition: @escaping (ErrorMessage) -> ()) {
         
-        if (!email.isEmpty && !password.isEmpty) {
-            Auth.auth().signIn(withEmail: email, password: password) { result, error in
-                if error != nil {
-                    complition(.signInError)
-                }
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if error != nil {
+                complition(.signInError)
             }
-        } else {
-            complition(.emptyFields)
         }
     }
     
     func signOut(complition: @escaping (ErrorMessage) -> ()) {
+        
         do{
             try Auth.auth().signOut()
         }catch {
@@ -60,22 +52,16 @@ final class CustomFirebase {
     
     func createUser(name: String, email: String, password: String, complition: @escaping (ErrorMessage) -> ()) {
         
-        if (!name.isEmpty && !email.isEmpty && !password.isEmpty) {
-            
-            Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                if error == nil {
-                    if let result = result {
-                        print(result.user.uid)
-                        
-                        let ref = Database.database().reference().child("users")
-                        ref.child(result.user.uid).updateChildValues(["name": name, "email": email])
-                    }
-                } else {
-                    complition(.authError)
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if error == nil {
+                if let result = result {
+                    print(result.user.uid)
+                    let ref = Database.database().reference().child("users")
+                    ref.child(result.user.uid).updateChildValues(["name": name, "email": email])
                 }
+            } else {
+                complition(.authError)
             }
-        } else {
-            complition(.emptyFields)
         }
     }
 }

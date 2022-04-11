@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		847211E727FF35A4008C91A9 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847211E627FF35A4008C91A9 /* InternetConnection.swift */; };
+		847211EF2803D614008C91A9 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847211EE2803D614008C91A9 /* Validator.swift */; };
 		847BA83827F5594600DDE673 /* AuthViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83727F5594600DDE673 /* AuthViewControllerImpl.swift */; };
 		847BA83D27F5616500DDE673 /* AuthStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83C27F5616500DDE673 /* AuthStackView.swift */; };
 		847BA84027F5673800DDE673 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83F27F5673800DDE673 /* AuthButton.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		847211E627FF35A4008C91A9 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
+		847211EE2803D614008C91A9 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		847BA83727F5594600DDE673 /* AuthViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerImpl.swift; sourceTree = "<group>"; };
 		847BA83C27F5616500DDE673 /* AuthStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStackView.swift; sourceTree = "<group>"; };
 		847BA83F27F5673800DDE673 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			children = (
 				847D320F27FBF28400C59F1E /* Domain */,
 				847BA85827FB005B00DDE673 /* CustomFirebase.swift */,
+				847211EE2803D614008C91A9 /* Validator.swift */,
 				847211E627FF35A4008C91A9 /* InternetConnection.swift */,
 				847E0A5427F304070067E936 /* CustomAlert.swift */,
 			);
@@ -381,6 +384,7 @@
 				847E0A5127F2DE4D0067E936 /* CustomButton.swift in Sources */,
 				847D320427FBE74800C59F1E /* EntryPresenter.swift in Sources */,
 				847D322227FD4DD200C59F1E /* StartRouter.swift in Sources */,
+				847211EF2803D614008C91A9 /* Validator.swift in Sources */,
 				847D320A27FBE9BA00C59F1E /* ResertPresenter.swift in Sources */,
 				847D322E27FD655100C59F1E /* GameConverter.swift in Sources */,
 				847D322827FD546600C59F1E /* GamePresenter.swift in Sources */,

@@ -9,6 +9,8 @@ import UIKit
 
 final class AuthAssembler {
     
+    private init() {}
+    
     static func assembly() -> UIViewController {
         
         let firebase = CustomFirebase()

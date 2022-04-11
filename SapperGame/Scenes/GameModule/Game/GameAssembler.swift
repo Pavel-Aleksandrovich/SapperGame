@@ -9,6 +9,8 @@ import UIKit
 
 final class GameAssembler {
     
+    private init() {}
+    
     static func assembly(state: SomeType) -> UIViewController {
         
         let gameConverter = GameConverter(state: state)

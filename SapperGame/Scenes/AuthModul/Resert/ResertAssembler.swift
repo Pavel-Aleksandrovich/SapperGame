@@ -9,6 +9,8 @@ import UIKit
 
 final class ResertAssembler {
     
+    private init() {}
+    
     static func assembly() -> UIViewController {
         
         let firebase = CustomFirebase()

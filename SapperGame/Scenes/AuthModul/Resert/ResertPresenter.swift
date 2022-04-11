@@ -41,8 +41,8 @@ final class ResertPresenterImpl: ResertPresenter {
             switch result {
             case .failure(let error):
                 self.view?.createAlert(title: error.rawValue)
-            case .success(let success):
-                self.view?.createAlert(title: success)
+            case .success:
+                self.view?.createAlert(title: "success")
             }
         }
     }
