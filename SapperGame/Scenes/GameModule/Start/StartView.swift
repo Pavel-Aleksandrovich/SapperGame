@@ -8,7 +8,13 @@
 import UIKit
 
 protocol StartViewDelegate: AnyObject {
-    func onLevelButtonTapped(state: SomeType)
+    func onLevelButtonTapped(state: LevelsState)
+}
+
+enum LevelsState {
+    case beginner
+    case middle
+    case advanced
 }
 
 final class StartView: UIView {
@@ -37,21 +43,17 @@ final class StartView: UIView {
         
         beginnerButton.customButton(title: "Beginner", action: #selector(beginnerButtonTapped), view: self, color: .green)
     }
-    // TODO: прокидывать не структуру а енам и в следующем экране уже решать какой кейс пришел
+   
     @objc private func advancedButtonTapped() {
-        onLevelButtonTapped(state: SomeType(numberOfBomb: 10, numberOfCells: 10))
+        delegate?.onLevelButtonTapped(state: .advanced)
     }
     
     @objc private func middleButtonTapped() {
-        onLevelButtonTapped(state: SomeType(numberOfBomb: 5, numberOfCells: 5))
+        delegate?.onLevelButtonTapped(state: .middle)
     }
     
     @objc private func beginnerButtonTapped() {
-        onLevelButtonTapped(state: SomeType(numberOfBomb: 1, numberOfCells: 3))
-    }
-    
-    private func onLevelButtonTapped(state: SomeType) {
-        delegate?.onLevelButtonTapped(state: state)
+        delegate?.onLevelButtonTapped(state: .beginner)
     }
     
     private func configureView() {

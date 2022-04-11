@@ -25,15 +25,18 @@ final class GamePresenterImpl: GamePresenter {
     
     private weak var view: GameViewController?
     private let router: GameRouter
-    private let gameConverter: GameConverter
+    private let gameConverter: GameConfigureLevel
+    private let levelsState: LevelsState
     
-    init(router: GameRouter, gameConverter: GameConverter) {
+    init(router: GameRouter, gameConverter: GameConfigureLevel, levelsState: LevelsState) {
         self.router = router
         self.gameConverter = gameConverter
+        self.levelsState = levelsState
     }
     
     func onViewAttached(view: GameViewController) {
         self.view = view
+        config()
     }
     
     func popToRootButtonTapped() {
@@ -63,5 +66,9 @@ final class GamePresenterImpl: GamePresenter {
     
     func getConstant() -> CGFloat {
         return gameConverter.getConstant()
+    }
+    
+    private func config() {
+        gameConverter.convert(state: levelsState)
     }
 }

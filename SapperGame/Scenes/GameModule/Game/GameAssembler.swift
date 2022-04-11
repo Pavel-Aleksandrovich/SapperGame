@@ -11,11 +11,11 @@ final class GameAssembler {
     
     private init() {}
     
-    static func assembly(state: SomeType) -> UIViewController {
+    static func assembly(state: LevelsState) -> UIViewController {
         
-        let gameConverter = GameConverter(state: state)
+        let gameConverter = GameConfigureLevelImpl()
         let router = GameRouterImpl()
-        let presenter = GamePresenterImpl(router: router, gameConverter: gameConverter)
+        let presenter = GamePresenterImpl(router: router, gameConverter: gameConverter, levelsState: state)
         let controller = GameViewControllerImpl(presenter: presenter)
         router.controller = controller
         

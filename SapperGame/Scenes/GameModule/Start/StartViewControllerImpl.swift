@@ -61,7 +61,7 @@ final class StartViewControllerImpl: UIViewController, StartViewController, Star
         title = "SapperGame"
     }
     // TODO: переминовать презентеры в соответсвии presenter.onLevelButtonTapped
-    func onLevelButtonTapped(state: SomeType) {
+    func onLevelButtonTapped(state: LevelsState) {
         presenter.onLevelButtonTapped(state: state)
     }
 }

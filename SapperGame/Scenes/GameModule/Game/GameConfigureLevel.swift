@@ -1,5 +1,5 @@
 //
-//  GameConverter.swift
+//  GameConfigureLevel.swift
 //  SapperGame
 //
 //  Created by pavel mishanin on 06.04.2022.
@@ -23,15 +23,35 @@ enum GameResult {
     case gameOver
 }
 
-final class GameConverter {
+protocol GameConfigureLevel {
+    func convert(state: LevelsState)
+    func getColor(index: Int) -> UIColor
+    func numberOfBomb() -> Int
+    func getConstant() -> CGFloat
+    func numberOfItemsInSection() -> Int
+    func didSelectItemAt(index: Int, complition: @escaping(GameResult) -> ())
+}
+
+final class GameConfigureLevelImpl: GameConfigureLevel {
     
     private var gameType: GameType = GameType(boolArray: [], colorArray: [], arr: [], numberOfELementsInArray: 1, numberOfBomb: 1, numberOfCells: 1, totalToWinSet: [])
     
-    init(state: SomeType) {
-        convert(state: state)
+    init() {
     }
     
-    func convert(state: SomeType) {
+    func convert(state: LevelsState) {
+        switch state {
+        case .beginner:
+            config(state: SomeType(numberOfBomb: 1, numberOfCells: 3))
+        case .middle:
+            config(state: SomeType(numberOfBomb: 5, numberOfCells: 5))
+        case .advanced:
+            config(state: SomeType(numberOfBomb: 10, numberOfCells: 10))
+        }
+    }
+    
+    private func config(state: SomeType) {
+        
         let colorArray = Array<UIColor>(repeating: .gray, count: state.numberOfELementsInArray)
         let arr = createRandomBombs(someType: state)
         let boolArray = createArrays(someType: state, arr: arr)

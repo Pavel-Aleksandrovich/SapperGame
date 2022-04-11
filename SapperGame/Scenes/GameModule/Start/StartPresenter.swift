@@ -10,7 +10,7 @@ import UIKit
 protocol StartPresenter {
     func onViewAttached(view: StartViewController)
     func onSignOutTapped()
-    func onLevelButtonTapped(state: SomeType)
+    func onLevelButtonTapped(state: LevelsState)
 }
 
 protocol StartViewController: AnyObject {
@@ -38,7 +38,7 @@ final class StartPresenterImpl: StartPresenter {
         }
     }
     // TODO: переминовать все в соответсвии routeToGameScreen
-    func onLevelButtonTapped(state: SomeType) {
+    func onLevelButtonTapped(state: LevelsState) {
         router.routeToGameScreen(state: state)
     }
 }
