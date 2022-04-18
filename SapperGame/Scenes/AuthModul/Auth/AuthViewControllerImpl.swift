@@ -49,5 +49,10 @@ final class AuthViewControllerImpl: UIViewController, AuthViewController, AuthVi
     func createUser(name: String, email: String, password: String) {
         presenter.createUser(name: name, email: email, password: password)
     }
+    
+    func phoneNumberButtonTapped() {
+        let vc = PhoneNumberViewController()
+        present(vc, animated: false)
+    }
 }
 

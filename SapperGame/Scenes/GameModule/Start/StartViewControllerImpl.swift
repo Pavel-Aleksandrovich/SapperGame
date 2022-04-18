@@ -11,6 +11,7 @@ import Firebase
 struct SomeType {
     let numberOfBomb: Int
     let numberOfCells: CGFloat
+    let numberOfLives: Int
     var numberOfELementsInArray: Int {
         return Int(numberOfCells) * Int(numberOfCells)
     }

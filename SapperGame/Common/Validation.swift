@@ -12,7 +12,7 @@ enum ValirationResult {
     case failure(ErrorMessage)
 }
 
-final class Validator {
+final class Validation {
     
     private enum Constant {
         static let characters = 6
@@ -20,46 +20,65 @@ final class Validator {
     
     func createUserValidation(name: String, email: String, password: String, complition: @escaping(ValirationResult) -> ()) {
         
-        if notEmpty([name, email, password]) {
+        if isAnyElementEmpty([name, email, password]) {
+            complition(.failure(.emptyFields))
+        } else {
             if password.count > Constant.characters {
                 complition(.success)
             } else {
                 complition(.failure(.shortPassword))
             }
-        } else {
-            complition(.failure(.emptyFields))
         }
     }
     
     func signInValidation(email: String, password: String, complition: @escaping(ValirationResult) -> ()) {
         
-        if notEmpty([email, password]) {
+        if isAnyElementEmpty([email, password]) {
+            complition(.failure(.emptyFields))
+        } else {
             if password.count > Constant.characters {
                 complition(.success)
             } else {
                 complition(.failure(.shortPassword))
             }
-        } else {
-            complition(.failure(.emptyFields))
         }
     }
+    // TODO: Delete complition
+    // FIXME:
+    // MARK:
+//    #warning("Delete complition use return")
     
+    // create for each field his own class validator
+    // отдельно для емаил , отдельно для пароля и отдельно для имени и все это вызывать в интересторе
+    // добавить протоколоы для
     func sendPasswordResetValidation(email: String, complition: @escaping(ValirationResult) -> ()) {
         
-        if notEmpty([email]) {
-            complition(.success)
-        } else {
+        if email.isEmpty {
             complition(.failure(.emptyFields))
+        } else {
+            complition(.success)
         }
     }
     
-    private func notEmpty(_ textFields: [String]) -> Bool {
-        var amount = Int()
+    private func isAnyElementEmpty(_ textFields: [String]) -> Bool {
+        
         for i in 0..<textFields.count {
-            if !textFields[i].isEmpty {
-                amount += 1
+            if textFields[i].isEmpty {
+                return false
             }
         }
-       return amount == textFields.count ? true : false
+        return true
+    }
+}
+
+final class PasswordValidator {
+    
+    func isValid(password: String) -> ValirationResult {
+        
+        if password.isEmpty {
+            return .failure(.emptyFields)
+        } else {
+            return .success
+        }
     }
 }

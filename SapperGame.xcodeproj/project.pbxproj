@@ -8,7 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		847211E727FF35A4008C91A9 /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847211E627FF35A4008C91A9 /* InternetConnection.swift */; };
-		847211EF2803D614008C91A9 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847211EE2803D614008C91A9 /* Validator.swift */; };
+		847211EF2803D614008C91A9 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847211EE2803D614008C91A9 /* Validation.swift */; };
+		8472120628067AFA008C91A9 /* SapperAVAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472120528067AFA008C91A9 /* SapperAVAudioPlayer.swift */; };
+		8472120828067BA0008C91A9 /* Dog.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8472120728067BA0008C91A9 /* Dog.wav */; };
+		8472120A28067BA8008C91A9 /* Cat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8472120928067BA8008C91A9 /* Cat.wav */; };
+		84721233280D1637008C91A9 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84721232280D1637008C91A9 /* PhoneNumberViewController.swift */; };
+		84721235280D1F19008C91A9 /* PhoneNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84721234280D1F19008C91A9 /* PhoneNumberButton.swift */; };
 		847BA83827F5594600DDE673 /* AuthViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83727F5594600DDE673 /* AuthViewControllerImpl.swift */; };
 		847BA83D27F5616500DDE673 /* AuthStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83C27F5616500DDE673 /* AuthStackView.swift */; };
 		847BA84027F5673800DDE673 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA83F27F5673800DDE673 /* AuthButton.swift */; };
@@ -22,6 +27,7 @@
 		847BA85527FAC8E300DDE673 /* EntryViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA85427FAC8E300DDE673 /* EntryViewControllerImpl.swift */; };
 		847BA85727FACB6700DDE673 /* ResetViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA85627FACB6700DDE673 /* ResetViewControllerImpl.swift */; };
 		847BA85927FB005B00DDE673 /* CustomFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BA85827FB005B00DDE673 /* CustomFirebase.swift */; };
+		847C4C35280D241C000A6D11 /* CodeValidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C4C34280D241C000A6D11 /* CodeValidViewController.swift */; };
 		847D31FB27FBE31800C59F1E /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D31FA27FBE31800C59F1E /* AuthPresenter.swift */; };
 		847D320027FBE55800C59F1E /* AuthAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D31FF27FBE55800C59F1E /* AuthAssembler.swift */; };
 		847D320227FBE68800C59F1E /* AuthRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D320127FBE68800C59F1E /* AuthRouterImpl.swift */; };
@@ -53,11 +59,19 @@
 		847E0A5127F2DE4D0067E936 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A5027F2DE4D0067E936 /* CustomButton.swift */; };
 		847E0A5327F2FF960067E936 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A5227F2FF960067E936 /* CustomStackView.swift */; };
 		847E0A5527F304070067E936 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E0A5427F304070067E936 /* CustomAlert.swift */; };
+		93124CA10B3A13608E6DBDB3 /* Pods_SapperGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA0D2A3B838F9FC797443DB /* Pods_SapperGame.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4441A6599063A6898DEF2B94 /* Pods-SapperGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SapperGame.release.xcconfig"; path = "Target Support Files/Pods-SapperGame/Pods-SapperGame.release.xcconfig"; sourceTree = "<group>"; };
+		6DA0D2A3B838F9FC797443DB /* Pods_SapperGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SapperGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		847211E627FF35A4008C91A9 /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnection.swift; sourceTree = "<group>"; };
-		847211EE2803D614008C91A9 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		847211EE2803D614008C91A9 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		8472120528067AFA008C91A9 /* SapperAVAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SapperAVAudioPlayer.swift; sourceTree = "<group>"; };
+		8472120728067BA0008C91A9 /* Dog.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Dog.wav; sourceTree = "<group>"; };
+		8472120928067BA8008C91A9 /* Cat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Cat.wav; sourceTree = "<group>"; };
+		84721232280D1637008C91A9 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
+		84721234280D1F19008C91A9 /* PhoneNumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberButton.swift; sourceTree = "<group>"; };
 		847BA83727F5594600DDE673 /* AuthViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerImpl.swift; sourceTree = "<group>"; };
 		847BA83C27F5616500DDE673 /* AuthStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStackView.swift; sourceTree = "<group>"; };
 		847BA83F27F5673800DDE673 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
@@ -67,6 +81,7 @@
 		847BA85427FAC8E300DDE673 /* EntryViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewControllerImpl.swift; sourceTree = "<group>"; };
 		847BA85627FACB6700DDE673 /* ResetViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewControllerImpl.swift; sourceTree = "<group>"; };
 		847BA85827FB005B00DDE673 /* CustomFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFirebase.swift; sourceTree = "<group>"; };
+		847C4C34280D241C000A6D11 /* CodeValidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeValidViewController.swift; sourceTree = "<group>"; };
 		847D31FA27FBE31800C59F1E /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		847D31FF27FBE55800C59F1E /* AuthAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAssembler.swift; sourceTree = "<group>"; };
 		847D320127FBE68800C59F1E /* AuthRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouterImpl.swift; sourceTree = "<group>"; };
@@ -100,6 +115,7 @@
 		847E0A5027F2DE4D0067E936 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		847E0A5227F2FF960067E936 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		847E0A5427F304070067E936 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		D0800E2DE9FF6E15ED3E2069 /* Pods-SapperGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SapperGame.debug.xcconfig"; path = "Target Support Files/Pods-SapperGame/Pods-SapperGame.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,18 +127,30 @@
 				847BA84A27F5B57600DDE673 /* FirebaseAuth in Frameworks */,
 				847BA84E27F5B57600DDE673 /* FirebaseDatabase in Frameworks */,
 				847BA84C27F5B57600DDE673 /* FirebaseFirestore in Frameworks */,
+				93124CA10B3A13608E6DBDB3 /* Pods_SapperGame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84721231280D161E008C91A9 /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				84721232280D1637008C91A9 /* PhoneNumberViewController.swift */,
+				847C4C34280D241C000A6D11 /* CodeValidViewController.swift */,
+				84721234280D1F19008C91A9 /* PhoneNumberButton.swift */,
+			);
+			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
 		847BA83927F5611000DDE673 /* AuthModul */ = {
 			isa = PBXGroup;
 			children = (
 				847D31FC27FBE41400C59F1E /* Auth */,
 				847D31FD27FBE42E00C59F1E /* Entry */,
 				847D31FE27FBE43700C59F1E /* Resert */,
+				84721231280D161E008C91A9 /* PhoneNumber */,
 				847BA83E27F5672900DDE673 /* Custom UI */,
 			);
 			path = AuthModul;
@@ -230,8 +258,12 @@
 		847E0A2C27F1680B0067E936 = {
 			isa = PBXGroup;
 			children = (
+				8472120728067BA0008C91A9 /* Dog.wav */,
+				8472120928067BA8008C91A9 /* Cat.wav */,
 				847E0A3727F1680B0067E936 /* SapperGame */,
 				847E0A3627F1680B0067E936 /* Products */,
+				93BB448CB63C33B6C267ABBE /* Pods */,
+				A0680BD2DF06E469BF803B1B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -277,8 +309,9 @@
 			children = (
 				847D320F27FBF28400C59F1E /* Domain */,
 				847BA85827FB005B00DDE673 /* CustomFirebase.swift */,
-				847211EE2803D614008C91A9 /* Validator.swift */,
+				847211EE2803D614008C91A9 /* Validation.swift */,
 				847211E627FF35A4008C91A9 /* InternetConnection.swift */,
+				8472120528067AFA008C91A9 /* SapperAVAudioPlayer.swift */,
 				847E0A5427F304070067E936 /* CustomAlert.swift */,
 			);
 			path = Common;
@@ -295,6 +328,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		93BB448CB63C33B6C267ABBE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0800E2DE9FF6E15ED3E2069 /* Pods-SapperGame.debug.xcconfig */,
+				4441A6599063A6898DEF2B94 /* Pods-SapperGame.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A0680BD2DF06E469BF803B1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DA0D2A3B838F9FC797443DB /* Pods_SapperGame.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -302,9 +352,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 847E0A4927F1680D0067E936 /* Build configuration list for PBXNativeTarget "SapperGame" */;
 			buildPhases = (
+				0F0ACD55399051BF5473E210 /* [CP] Check Pods Manifest.lock */,
 				847E0A3127F1680B0067E936 /* Sources */,
 				847E0A3227F1680B0067E936 /* Frameworks */,
 				847E0A3327F1680B0067E936 /* Resources */,
+				E3EA242AC51379A30ED2D686 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -361,13 +413,57 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8472120A28067BA8008C91A9 /* Cat.wav in Resources */,
 				847E0A4527F1680D0067E936 /* LaunchScreen.storyboard in Resources */,
 				847BA84527F5B41300DDE673 /* GoogleService-Info.plist in Resources */,
 				847E0A4227F1680D0067E936 /* Assets.xcassets in Resources */,
+				8472120828067BA0008C91A9 /* Dog.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F0ACD55399051BF5473E210 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SapperGame-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3EA242AC51379A30ED2D686 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SapperGame/Pods-SapperGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SapperGame/Pods-SapperGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SapperGame/Pods-SapperGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		847E0A3127F1680B0067E936 /* Sources */ = {
@@ -379,12 +475,14 @@
 				847BA84327F571AF00DDE673 /* AuthTextField.swift in Sources */,
 				847E0A3D27F1680B0067E936 /* GameViewControllerImpl.swift in Sources */,
 				847BA85527FAC8E300DDE673 /* EntryViewControllerImpl.swift in Sources */,
+				8472120628067AFA008C91A9 /* SapperAVAudioPlayer.swift in Sources */,
 				847D322427FD4E9300C59F1E /* StartAssembler.swift in Sources */,
 				847D321727FC1BED00C59F1E /* ResetView.swift in Sources */,
 				847E0A5127F2DE4D0067E936 /* CustomButton.swift in Sources */,
 				847D320427FBE74800C59F1E /* EntryPresenter.swift in Sources */,
+				84721233280D1637008C91A9 /* PhoneNumberViewController.swift in Sources */,
 				847D322227FD4DD200C59F1E /* StartRouter.swift in Sources */,
-				847211EF2803D614008C91A9 /* Validator.swift in Sources */,
+				847211EF2803D614008C91A9 /* Validation.swift in Sources */,
 				847D320A27FBE9BA00C59F1E /* ResertPresenter.swift in Sources */,
 				847D322E27FD655100C59F1E /* GameConfigureLevel.swift in Sources */,
 				847D322827FD546600C59F1E /* GamePresenter.swift in Sources */,
@@ -409,6 +507,8 @@
 				847D322027FD4D1700C59F1E /* StartPresenter.swift in Sources */,
 				847D31FB27FBE31800C59F1E /* AuthPresenter.swift in Sources */,
 				847D322A27FD54D300C59F1E /* GameRouter.swift in Sources */,
+				847C4C35280D241C000A6D11 /* CodeValidViewController.swift in Sources */,
+				84721235280D1F19008C91A9 /* PhoneNumberButton.swift in Sources */,
 				847BA85327F711FD00DDE673 /* a.swift in Sources */,
 				847BA84027F5673800DDE673 /* AuthButton.swift in Sources */,
 				847D322627FD4F5400C59F1E /* StartView.swift in Sources */,
@@ -548,6 +648,7 @@
 		};
 		847E0A4A27F1680D0067E936 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0800E2DE9FF6E15ED3E2069 /* Pods-SapperGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -567,6 +668,7 @@
 		};
 		847E0A4B27F1680D0067E936 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4441A6599063A6898DEF2B94 /* Pods-SapperGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -17,8 +17,10 @@ protocol GamePresenter {
 }
 
 protocol GameViewController: AnyObject {
-    func createAlert(title: String)
+    func showAlertGoBack(title: String)
+    func showAlert(title: String)
     func reloadData()
+    func getNumberOfLives(number: Int)
 }
 
 final class GamePresenterImpl: GamePresenter {
@@ -27,11 +29,13 @@ final class GamePresenterImpl: GamePresenter {
     private let router: GameRouter
     private let gameConverter: GameConfigureLevel
     private let levelsState: LevelsState
+    private let interactor: Interactor
     
-    init(router: GameRouter, gameConverter: GameConfigureLevel, levelsState: LevelsState) {
+    init(router: GameRouter, gameConverter: GameConfigureLevel, levelsState: LevelsState, interactor: Interactor) {
         self.router = router
         self.gameConverter = gameConverter
         self.levelsState = levelsState
+        self.interactor = interactor
     }
     
     func onViewAttached(view: GameViewController) {
@@ -52,14 +56,20 @@ final class GamePresenterImpl: GamePresenter {
     }
     
     func didSelectItemAt(index: Int) {
-        gameConverter.didSelectItemAt(index: index) { result in
+        gameConverter.didSelectItemAt(index: index) { [ weak self ] result in
             switch result {
             case .reload:
-                self.view?.reloadData()
+                self?.view?.reloadData()
             case .gameWin:
-                self.view?.createAlert(title: "You are win")
+                self?.view?.showAlertGoBack(title: "You are win")
+                self?.interactor.playSound(sound: .cat)
             case .gameOver:
-                self.view?.createAlert(title: "Game Over")
+                self?.view?.getNumberOfLives(number: (self?.gameConverter.getNumberOfLives()) ?? 1)
+                self?.view?.showAlertGoBack(title: "Game Over")
+                self?.interactor.playSound(sound: .dog)
+            case .onBombTapped:
+                self?.view?.getNumberOfLives(number: self?.gameConverter.getNumberOfLives() ?? 1)
+                self?.view?.showAlert(title: "On Bomb Tapped")
             }
         }
     }
@@ -70,5 +80,6 @@ final class GamePresenterImpl: GamePresenter {
     
     private func config() {
         gameConverter.convert(state: levelsState)
+        self.view?.getNumberOfLives(number: gameConverter.getNumberOfLives())
     }
 }

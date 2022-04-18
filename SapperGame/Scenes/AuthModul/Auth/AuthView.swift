@@ -10,6 +10,7 @@ import UIKit
 protocol AuthViewDelegate: AnyObject {
     func entryButtonTapped()
     func createUser(name: String, email: String, password: String)
+    func phoneNumberButtonTapped()
 }
 
 final class AuthView: UIView {
@@ -21,6 +22,7 @@ final class AuthView: UIView {
     private let passwordTextField = AuthTextField()
     private let entryButton = AuthButton()
     private let authButton = AuthButton()
+    private let phoneNumberButton = AuthButton()
     
     init() {
         super.init(frame: CGRect())
@@ -46,9 +48,14 @@ final class AuthView: UIView {
         
         entryButton.customButton(title: "Have you got an account? Entry", action: #selector(entryButtonTapped), view: self, color: .blue)
         authButton.customButton(title: "Auth", action: #selector(authButtonTapped), view: self, color: .blue)
+        phoneNumberButton.customButton(title: "Auth with Phone Number", action: #selector(phoneNumberButtonTapped), view: self, color: .blue)
         
         addSubview(vStackView)
-        vStackView.addArrangedSubviews([nameTextField, emailTextField, passwordTextField, entryButton, authButton])
+        vStackView.addArrangedSubviews([nameTextField, emailTextField, passwordTextField, entryButton, authButton, phoneNumberButton])
+    }
+    
+    @objc private func phoneNumberButtonTapped() {
+        delegate?.phoneNumberButtonTapped()
     }
     
     @objc private func entryButtonTapped() {
@@ -82,6 +89,9 @@ final class AuthView: UIView {
             
             authButton.widthAnchor.constraint(equalTo: vStackView.widthAnchor),
             authButton.heightAnchor.constraint(equalToConstant: 60),
+            
+            phoneNumberButton.widthAnchor.constraint(equalTo: vStackView.widthAnchor),
+            phoneNumberButton.heightAnchor.constraint(equalToConstant: 60),
         ])
     }
 }

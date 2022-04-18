@@ -21,10 +21,20 @@ enum ErrorMessage: String, Error {
 
 final class CustomFirebase {
     
+    private let someAuth = Auth.auth()
+    
     func sendPasswordReset(email: String, complition: @escaping (ValirationResult) -> ()) {
         
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
+        someAuth.sendPasswordReset(withEmail: email) { error in
+            // вынести логику обработки ошибок в интерактор и там её фильтровать и решать что делать
+            if ((error as? CFNetworkErrors) != nil) {
+                
+            }
+            
+            
+            
             if error == nil{
+                
                 complition(.success)
             } else {
                 complition(.failure(.resetPasswordError))
@@ -34,7 +44,13 @@ final class CustomFirebase {
     
     func signIn(email: String, password: String, complition: @escaping (ErrorMessage) -> ()) {
         
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+        someAuth.signIn(withEmail: email, password: password) { result, error in
+            if result == nil {
+                complition(.signInError)
+            } else {
+                print("success")
+            }
+            
             if error != nil {
                 complition(.signInError)
             }
@@ -44,7 +60,7 @@ final class CustomFirebase {
     func signOut(complition: @escaping (ErrorMessage) -> ()) {
         
         do{
-            try Auth.auth().signOut()
+            try someAuth.signOut()
         }catch {
             complition(.signOutError)
         }
@@ -52,13 +68,18 @@ final class CustomFirebase {
     
     func createUser(name: String, email: String, password: String, complition: @escaping (ErrorMessage) -> ()) {
         
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if error == nil {
-                if let result = result {
-                    print(result.user.uid)
-                    let ref = Database.database().reference().child("users")
-                    ref.child(result.user.uid).updateChildValues(["name": name, "email": email])
-                }
+        someAuth.createUser(withEmail: email, password: password) { result, error in
+            
+            if error != nil {
+                complition(.authError)
+                return
+            }
+            
+            let uid = result?.user.uid
+            
+            if let uid = uid {
+                let ref = Database.database().reference().child("users")
+                ref.child(uid).updateChildValues(["name": name, "email": email])
             } else {
                 complition(.authError)
             }

@@ -37,16 +37,25 @@ final class GameViewControllerImpl: UIViewController, GameViewController {
         super.viewDidLoad()
         configureView()
     }
-    //прееминовать алерт
-    func createAlert(title: String) {
+    
+    func showAlertGoBack(title: String) {
         collectionView.reloadData()
         alert.showAlert(view: self, title: title, complition: {
             self.presenter.popToRootButtonTapped()
         })
     }
     
+    func showAlert(title: String) {
+        collectionView.reloadData()
+        alert.showAlert(view: self, title: title, complition: nil)
+    }
+    
     func reloadData() {
         collectionView.reloadData()
+    }
+    
+    func getNumberOfLives(number: Int) {
+        print(number)
     }
 }
 

@@ -13,13 +13,15 @@ protocol Interactor {
     func signOut(complition: @escaping (ErrorMessage) -> ())
     func createUser(name: String, email: String, password: String, complition: @escaping (ErrorMessage) -> ())
     func checkInternetConnection(complition: @escaping (Bool) -> ())
+    func playSound(sound: Sound)
 }
 
 final class InteractorImpl: Interactor {
     
     private let firebase: CustomFirebase
     private let internetConnection = InternetConnection()
-    private let validator = Validator()
+    private let validator = Validation()
+    private let player = SapperAVAudioPlayer()
     
     init(firebase: CustomFirebase) {
         self.firebase = firebase
@@ -67,8 +69,10 @@ final class InteractorImpl: Interactor {
     
     func checkInternetConnection(complition: @escaping (Bool) -> ()) {
         
-        internetConnection.checkInternetStatus { status in
-            complition(status)
-        }
+        internetConnection.setInternetStatusListener(complition: complition)
+    }
+    
+    func playSound(sound: Sound) {
+        player.playSound(sound: sound)
     }
 }

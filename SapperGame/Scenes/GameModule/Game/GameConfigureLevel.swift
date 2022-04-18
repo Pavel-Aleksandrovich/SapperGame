@@ -8,19 +8,21 @@
 import UIKit
 
 struct GameType {
-    var boolArray: [Bool]
+    let boolArray: [Bool]
     var colorArray: [UIColor]
-    var arr: [Int]
-    var numberOfELementsInArray: Int
-    var numberOfBomb: Int
-    var numberOfCells: CGFloat
+    let arr: [Int]
+    let numberOfELementsInArray: Int
+    let numberOfBomb: Int
+    let numberOfCells: CGFloat
     var totalToWinSet: Set<Int>
+    var numberOfLives: Int
 }
 
 enum GameResult {
     case reload
     case gameWin
     case gameOver
+    case onBombTapped
 }
 
 protocol GameConfigureLevel {
@@ -30,11 +32,12 @@ protocol GameConfigureLevel {
     func getConstant() -> CGFloat
     func numberOfItemsInSection() -> Int
     func didSelectItemAt(index: Int, complition: @escaping(GameResult) -> ())
+    func getNumberOfLives() -> Int
 }
 
 final class GameConfigureLevelImpl: GameConfigureLevel {
     
-    private var gameType: GameType = GameType(boolArray: [], colorArray: [], arr: [], numberOfELementsInArray: 1, numberOfBomb: 1, numberOfCells: 1, totalToWinSet: [])
+    private var gameType: GameType = GameType(boolArray: [], colorArray: [], arr: [], numberOfELementsInArray: 1, numberOfBomb: 1, numberOfCells: 1, totalToWinSet: [], numberOfLives: 0)
     
     init() {
     }
@@ -42,11 +45,11 @@ final class GameConfigureLevelImpl: GameConfigureLevel {
     func convert(state: LevelsState) {
         switch state {
         case .beginner:
-            config(state: SomeType(numberOfBomb: 1, numberOfCells: 3))
+            config(state: SomeType(numberOfBomb: 1, numberOfCells: 3, numberOfLives: 1))
         case .middle:
-            config(state: SomeType(numberOfBomb: 5, numberOfCells: 5))
+            config(state: SomeType(numberOfBomb: 5, numberOfCells: 5, numberOfLives: 2))
         case .advanced:
-            config(state: SomeType(numberOfBomb: 10, numberOfCells: 10))
+            config(state: SomeType(numberOfBomb: 10, numberOfCells: 10, numberOfLives: 3))
         }
     }
     
@@ -62,8 +65,13 @@ final class GameConfigureLevelImpl: GameConfigureLevel {
                  numberOfELementsInArray: state.numberOfELementsInArray,
                  numberOfBomb: state.numberOfBomb,
                  numberOfCells: state.numberOfCells,
-                 totalToWinSet: []
+                 totalToWinSet: [],
+                 numberOfLives: state.numberOfLives
         )
+    }
+    
+    func getNumberOfLives() -> Int {
+        return gameType.numberOfLives
     }
     
     func getColor(index: Int) -> UIColor {
@@ -102,7 +110,13 @@ final class GameConfigureLevelImpl: GameConfigureLevel {
     
     private func bombTapped(index: Int) -> GameResult  {
         gameType.colorArray[index] = .red
-        return .gameOver
+        gameType.numberOfLives -= 1
+        if gameType.numberOfLives == 0 {
+            gameType.totalToWinSet.insert(index)
+            return .gameOver
+        } else {
+            return .onBombTapped
+        }
     }
     
     private func createRandomBombs(someType: SomeType) -> [Int] {

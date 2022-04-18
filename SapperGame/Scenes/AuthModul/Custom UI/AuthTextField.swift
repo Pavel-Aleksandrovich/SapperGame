@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 final class AuthTextField: UITextField, UITextFieldDelegate {
     

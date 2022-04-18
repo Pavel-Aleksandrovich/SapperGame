@@ -15,13 +15,14 @@ final class InternetConnection {
     private var networkAvailableHandler: ((Bool) -> ())? = nil
     
     init() {
-        addInternetStatusListener()
         getPathStatus()
+        pathMonitor.start(queue: DispatchQueue.global(qos: .background))
     }
     
-    func checkInternetStatus(complition: @escaping(Bool) -> ()) {
+    func setInternetStatusListener(complition: ((Bool) -> ())? = nil) {
+        
         let status = getInternetStatus()
-        complition(status)
+        complition?(status)
         networkAvailableHandler = complition
     }
     
@@ -33,16 +34,11 @@ final class InternetConnection {
         }
     }
     
-    private func addInternetStatusListener() {
-        pathMonitor.start(queue: DispatchQueue.global(qos: .background))
-    }
-    
-    private func removeInternetStatusListener() {
-        networkAvailableHandler = nil
+    private func cancelInternetStatusListener() {
         pathMonitor.cancel()
     }
     
     private func getInternetStatus() -> Bool {
-        return pathMonitor.currentPath.status == NWPath.Status.satisfied
+        return !(pathMonitor.currentPath.status == NWPath.Status.satisfied)
     }
 }

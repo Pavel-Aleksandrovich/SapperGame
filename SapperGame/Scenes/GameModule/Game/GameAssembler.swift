@@ -13,9 +13,11 @@ final class GameAssembler {
     
     static func assembly(state: LevelsState) -> UIViewController {
         
+        let firebase = CustomFirebase()
+        let interactor = InteractorImpl(firebase: firebase)
         let gameConverter = GameConfigureLevelImpl()
         let router = GameRouterImpl()
-        let presenter = GamePresenterImpl(router: router, gameConverter: gameConverter, levelsState: state)
+        let presenter = GamePresenterImpl(router: router, gameConverter: gameConverter, levelsState: state, interactor: interactor)
         let controller = GameViewControllerImpl(presenter: presenter)
         router.controller = controller
         
